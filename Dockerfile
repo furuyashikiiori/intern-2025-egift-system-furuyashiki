@@ -18,9 +18,11 @@ RUN apt-get update && \
         libjemalloc2 \
         libvips \
         libyaml-dev \
+        libpq-dev \
+        postgresql-client \
         pkg-config \
-        sqlite3 \
         nodejs \
+        netcat-openbsd \
         yarn && \
     rm -rf /var/lib/apt/lists/*
 
@@ -36,10 +38,10 @@ RUN bundle install
 COPY . .
 
 # Entrypoint prepares the database.
-ENTRYPOINT ["/usr/src/intern-egift-system/bin/docker-entrypoint"]
+ENTRYPOINT ["./bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 3000
 
 # Start server via Thruster by default, this can be overwritten at runtime
-CMD ["./bin/thrust", "./bin/rails", "server"]
+CMD ["./bin/thrust", "./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
