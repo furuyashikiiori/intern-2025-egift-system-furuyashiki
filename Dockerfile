@@ -21,10 +21,12 @@ RUN apt-get update && \
         libpq-dev \
         postgresql-client \
         pkg-config \
-        nodejs \
-        netcat-openbsd \
-        yarn && \
+        netcat-openbsd && \
     rm -rf /var/lib/apt/lists/*
+
+# Install Node.js and yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+RUN npm install --global yarn
 
 # Set development environment
 ENV RAILS_ENV="development" \
