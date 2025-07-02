@@ -24,9 +24,8 @@ RUN apt-get update && \
         netcat-openbsd && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Node.js and yarn
+# Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
-RUN npm install --global yarn
 
 # Set development environment
 ENV RAILS_ENV="development" \
