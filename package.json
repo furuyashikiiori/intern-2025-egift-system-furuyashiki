@@ -7,5 +7,8 @@
   "scripts": {
     "build": "esbuild app/javascript/**/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --loader:.css=css",
     "build:watch": "esbuild app/javascript/**/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --loader:.css=css --watch=forever"
+  },
+  "dependencies": {
+    "@giftee/abukuma-css": "^3.1.1"
   }
 }
