@@ -1,0 +1,39 @@
+<%= form_with(model: @item_form, url: @item_form.persisted? ? admins_item_path(@item_form.item) : admins_items_path, method: @item_form.persisted? ? :patch : :post, local: true) do |form| %>
+  <% if @item_form.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@item_form.errors.count, "error") %> prohibited this item from being saved:</h4>
+      <ul>
+        <% @item_form.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, "商品名", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :price, "価格", class: "form-label" %>
+    <%= form.number_field :price, step: :any, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "商品説明", class: "form-label" %>
+    <%= form.text_area :description, rows: 4, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <div class="form-check">
+      <%= form.check_box :published, class: "form-check-input" %>
+      <%= form.label :published, "公開する", class: "form-check-label" %>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= form.submit "保存", class: "btn btn-primary" %>
+    <%= link_to "キャンセル", admins_items_path, class: "btn btn-secondary" %>
+  </div>
+<% end %> 
