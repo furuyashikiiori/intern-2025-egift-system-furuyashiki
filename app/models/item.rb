@@ -12,4 +12,6 @@
 #  updated_at  :datetime         not null
 #
 class Item < ApplicationRecord
+  # Active Storage attachment for item image
+  has_one_attached :image
 end

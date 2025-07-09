@@ -12,6 +12,12 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title"><%= @item.name %></h2>
+
+      <% if @item.image.attached? %>
+        <div class="my-3 text-center">
+          <%= image_tag @item.image.variant(resize_to_limit: [600, 600]), class: "img-fluid img-thumbnail" %>
+        </div>
+      <% end %>
       
       <dl class="row">
         <dt class="col-sm-3">価格</dt>

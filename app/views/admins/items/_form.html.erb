@@ -1,4 +1,4 @@
-<%= form_with(model: @item_form, url: @item_form.persisted? ? admins_item_path(@item_form.item) : admins_items_path, method: @item_form.persisted? ? :patch : :post, local: true) do |form| %>
+<%= form_with(model: @item_form, url: @item_form.persisted? ? admins_item_path(@item_form.item) : admins_items_path, method: @item_form.persisted? ? :patch : :post, local: true, html: { multipart: true }) do |form| %>
   <% if @item_form.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= pluralize(@item_form.errors.count, "error") %> prohibited this item from being saved:</h4>
@@ -23,6 +23,11 @@
   <div class="mb-3">
     <%= form.label :description, "商品説明", class: "form-label" %>
     <%= form.text_area :description, rows: 4, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, "商品画像", class: "form-label" %>
+    <%= form.file_field :image, class: "form-control" %>
   </div>
 
   <div class="mb-3">

@@ -7,6 +7,9 @@ class ItemForm
   attribute :description, :string
   attribute :published, :boolean, default: false
 
+  # Active Storage 投稿画像
+  attr_accessor :image
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :description, length: { maximum: 1000 }
@@ -27,6 +30,8 @@ class ItemForm
       description: description,
       published: published
     )
+    # 画像が渡されていれば添付
+    @item.image.attach(image) if image.present?
     @item.save
   end
 
@@ -38,6 +43,11 @@ class ItemForm
       description: description,
       published: published
     )
+    # 更新時に新しい画像が指定されていれば置き換える
+    if image.present?
+      @item.image.purge if @item.image.attached?
+      @item.image.attach(image)
+    end
     @item.save
   end
 
