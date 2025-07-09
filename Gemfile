@@ -54,7 +54,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'foreman'
+  gem "foreman"
+  # Add schema information to models
+  gem "annotaterb"
 end
 
 group :test do
@@ -63,4 +65,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'jsbundling-rails'
+gem "jsbundling-rails"
