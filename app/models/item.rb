@@ -14,4 +14,10 @@
 class Item < ApplicationRecord
   # Active Storage attachment for item image
   has_one_attached :image
+
+  scope :active, -> { where(deleted_at: nil) }
+
+  def soft_delete
+    update(deleted_at: Time.current)
+  end
 end
