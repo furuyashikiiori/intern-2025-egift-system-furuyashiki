@@ -1,4 +1,4 @@
-<%= form_with(model: @item_form, url: @item_form.persisted? ? admins_item_path(@item_form.item) : admins_items_path, method: @item_form.persisted? ? :patch : :post, local: true, html: { multipart: true }) do |form| %>
+<%= admin_item_form_with(@item_form) do |form| %>
   <% if @item_form.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= @item_form.errors.count %>件のエラーが発生したため保存できませんでした:</h4>
