@@ -22,7 +22,7 @@ class Admins::ItemsController < ApplicationController
     end
 
     if @item_form.save
-      redirect_to admins_items_path, notice: "アイテムが正常に作成されました。"
+      redirect_to admins_items_path, notice: "商品が正常に作成されました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,15 +42,15 @@ class Admins::ItemsController < ApplicationController
     end
 
     if @item_form.update
-      redirect_to admins_item_path(@item), notice: "アイテムが正常に更新されました。"
+      redirect_to admins_item_path(@item), notice: "商品が正常に更新されました。"
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @item.destroy
-    redirect_to admins_items_path, notice: "アイテムが正常に削除されました。"
+    @item.soft_delete
+    redirect_to admins_items_path, notice: "商品が正常に削除されました。"
   end
 
   private
