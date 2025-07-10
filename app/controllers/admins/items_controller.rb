@@ -16,15 +16,13 @@ class Admins::ItemsController < ApplicationController
     @item_form = ItemForm.new
     @item_form.assign_attributes(item_form_params)
 
-    # バリデーションチェック
     unless @item_form.valid?
       render :new, status: :unprocessable_entity
       return
     end
 
-    # バリデーション成功時の保存処理
     if @item_form.save
-      redirect_to admins_items_path, notice: "\u30A2\u30A4\u30C6\u30E0\u304C\u6B63\u5E38\u306B\u4F5C\u6210\u3055\u308C\u307E\u3057\u305F\u3002"
+      redirect_to admins_items_path, notice: "アイテムが正常に作成されました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,15 +36,13 @@ class Admins::ItemsController < ApplicationController
     @item_form = ItemForm.new(@item)
     @item_form.assign_attributes(item_form_params)
 
-    # バリデーションチェック
     unless @item_form.valid?
       render :edit, status: :unprocessable_entity
       return
     end
 
-    # バリデーション成功時の更新処理
     if @item_form.update
-      redirect_to admins_item_path(@item), notice: "\u30A2\u30A4\u30C6\u30E0\u304C\u6B63\u5E38\u306B\u66F4\u65B0\u3055\u308C\u307E\u3057\u305F\u3002"
+      redirect_to admins_item_path(@item), notice: "アイテムが正常に更新されました。"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -54,7 +50,7 @@ class Admins::ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to admins_items_path, notice: "\u30A2\u30A4\u30C6\u30E0\u304C\u6B63\u5E38\u306B\u524A\u9664\u3055\u308C\u307E\u3057\u305F\u3002"
+    redirect_to admins_items_path, notice: "アイテムが正常に削除されました。"
   end
 
   private
