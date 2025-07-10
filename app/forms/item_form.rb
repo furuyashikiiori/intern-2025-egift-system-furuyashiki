@@ -12,6 +12,7 @@ class ItemForm
   validates :name, presence: true, length: { maximum: 255 }
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :description, length: { maximum: 1000 }
+  validate :image_must_be_present
 
   def initialize(item = nil)
     @item = item || Item.new
@@ -63,5 +64,18 @@ class ItemForm
 
   def self.model_name
     @model_name ||= ActiveModel::Name.new(self, nil, "ItemForm")
+  end
+
+  private
+
+  def image_must_be_present
+    # 新規作成時：imageが必須
+    if @item.new_record?
+      errors.add(:image, :blank) if image.blank?
+    else
+      if image.blank? && !@item.image.attached?
+        errors.add(:image, :blank)
+      end
+    end
   end
 end
