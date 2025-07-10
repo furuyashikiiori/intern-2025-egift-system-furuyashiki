@@ -6,7 +6,7 @@
 #  deleted_at  :datetime
 #  description :text
 #  name        :string
-#  price       :decimal(10, 2)   not null
+#  price       :integer          not null
 #  published   :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

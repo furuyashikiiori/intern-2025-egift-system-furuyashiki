@@ -3,14 +3,14 @@ class ItemForm
   include ActiveModel::Attributes
 
   attribute :name, :string
-  attribute :price, :decimal
+  attribute :price, :integer
   attribute :description, :string
   attribute :published, :boolean, default: false
 
   attr_accessor :image
 
   validates :name, presence: true, length: { maximum: 255 }
-  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :description, length: { maximum: 1000 }
   validate :image_must_be_present
 

@@ -17,7 +17,7 @@
 
   <div class="mb-3">
     <%= form.label :price, "価格", class: "form-label" %>
-    <%= form.number_field :price, step: :any, class: "form-control" %>
+    <%= form.number_field :price, step: 1, min: 1, class: "form-control" %>
   </div>
 
   <div class="mb-3">
