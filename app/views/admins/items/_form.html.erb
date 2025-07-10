@@ -1,7 +1,7 @@
 <%= form_with(model: @item_form, url: @item_form.persisted? ? admins_item_path(@item_form.item) : admins_items_path, method: @item_form.persisted? ? :patch : :post, local: true, html: { multipart: true }) do |form| %>
   <% if @item_form.errors.any? %>
     <div class="alert alert-danger">
-      <h4><%= pluralize(@item_form.errors.count, "error") %> prohibited this item from being saved:</h4>
+      <h4><%= @item_form.errors.count %>件のエラーが発生したため保存できませんでした:</h4>
       <ul>
         <% @item_form.errors.full_messages.each do |message| %>
           <li><%= message %></li>

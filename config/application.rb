@@ -11,9 +11,17 @@ module InternEgiftSystem
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
+    # --- I18n 設定 ---
+    # デフォルトロケールを日本語に設定
+    config.i18n.default_locale = :ja
+    # 利用可能なロケールを限定（不要なら削除可）
+    config.i18n.available_locales = [ :ja, :en ]
+
+    # 日本時間をデフォルトタイムゾーンに
+    config.time_zone = "Asia/Tokyo"
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
-    # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
