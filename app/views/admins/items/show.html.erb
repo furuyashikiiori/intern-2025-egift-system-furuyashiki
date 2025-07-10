@@ -21,7 +21,7 @@
       
       <dl class="row">
         <dt class="col-sm-3">価格</dt>
-        <dd class="col-sm-9"><%= number_to_currency(@item.price, unit: "¥", format: "%u%n") %></dd>
+        <dd class="col-sm-9"><%= format_price(@item.price) %></dd>
         
         <dt class="col-sm-3">公開状態</dt>
         <dd class="col-sm-9">
