@@ -69,7 +69,6 @@ class ItemForm
   private
 
   def image_must_be_present
-    # 新規作成時：imageが必須
     if @item.new_record?
       errors.add(:image, :blank) if image.blank?
     else

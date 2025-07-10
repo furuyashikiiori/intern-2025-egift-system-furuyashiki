@@ -21,12 +21,8 @@
           <% @items.each do |item| %>
             <tr>
               <td>
-                <% if item.image.attached? %>
-                  <%= link_to admins_item_path(item) do %>
-                    <%= image_tag item.image.variant(resize_to_limit: [80, 80]), class: "img-thumbnail", alt: item.name %>
-                  <% end %>
-                <% else %>
-                  <span class="text-muted">なし</span>
+                <%= link_to admins_item_path(item) do %>
+                  <%= image_tag item.image.variant(resize_to_limit: [80, 80]), class: "img-thumbnail", alt: item.name %>
                 <% end %>
               </td>
               <td><%= link_to item.name, admins_item_path(item) %></td>
@@ -54,7 +50,6 @@
   <% else %>
     <div class="alert alert-info">
       <p>まだ商品が登録されていません。</p>
-      <%= link_to "最初の商品を作成する", new_admins_item_path, class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
