@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>商品管理</h1>
+    <%= link_to "新規作成", new_admins_item_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @items.any? %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>公開状態</th>
+            <th>作成日</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td>
+                <%= link_to admins_item_path(item) do %>
+                  <%= image_tag item.image.variant(resize_to_limit: [80, 80]), class: "img-thumbnail", alt: item.name %>
+                <% end %>
+              </td>
+              <td><%= link_to item.name, admins_item_path(item) %></td>
+              <td><%= format_price(item.price) %></td>
+              <td>
+                <% if item.published? %>
+                  <span class="badge bg-success">公開</span>
+                <% else %>
+                  <span class="badge bg-secondary">非公開</span>
+                <% end %>
+              </td>
+              <td><%= item.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+              <td>
+                <%= link_to "詳細", admins_item_path(item), class: "btn btn-sm btn-outline-primary" %>
+                <%= link_to "編集", edit_admins_item_path(item), class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to "削除", admins_item_path(item), 
+                    data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, 
+                    class: "btn btn-sm btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      <p>まだ商品が登録されていません。</p>
+    </div>
+  <% end %>
+</div>
