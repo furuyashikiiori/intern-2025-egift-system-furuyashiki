@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   # eGift namespace
   namespace :egift do
     root "top#index"
+    resources :orders, only: [ :new, :create, :show ]
   end
 end

@@ -1,0 +1,17 @@
+<% content_for :title, "eGift System - 注文" %>
+
+<div class="container py-5 mt-5 pt-4">
+  <%= render 'product_info' %>
+
+  <%= form_with url: egift_orders_path, method: :post, local: true do |form| %>
+    <%= form.hidden_field :item_id, value: @item.id %>
+    <%= form.hidden_field :card_template, value: "gift-card-1", id: "cardTemplateField" %>
+    <%= form.hidden_field :message, value: "", id: "messageField" %>
+    <%= form.hidden_field :sender_name, value: "", id: "senderField" %>
+    <%= form.hidden_field :recipient_name, value: "", id: "recipientField" %>
+
+    <%= render 'gift_card_form', form: form %>
+    <%= render 'payment_form', form: form %>
+    <%= render 'submit_button', form: form %>
+  <% end %>
+</div>

@@ -1,0 +1,65 @@
+<%
+  card_templates = [
+    { name: "gift-card-1", alt: "Gift Card Design 1" },
+    { name: "gift-card-2", alt: "Gift Card Design 2" },
+    { name: "gift-card-3", alt: "Gift Card Design 3" }
+  ]
+%>
+
+<section class="mb-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="h4 mb-0">1. ギフトカードを作る</h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div>
+            <div class="card shadow-sm rounded-3 mx-auto mb-4 mw-300">
+              <img src="<%= image_path('gift-card-1.png') %>" alt="Gift Card Design" class="img-fluid rounded" id="previewCardImage">
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="recipientInput" maxlength="20" placeholder="受取人の名前">
+                  <label for="recipientInput">To</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea class="form-control h-100px" id="messageInput" placeholder="ここにメッセージをお書きください（140文字以内）" maxlength="140"></textarea>
+                  <label for="messageInput">メッセージ(140文字以内)</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="senderInput" maxlength="20" placeholder="送信者の名前">
+                  <label for="senderInput">From</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- カードデザイン選択 -->
+          <div class="mb-4">
+            <label class="form-label fw-bold">デザインを選択</label>
+            <div class="row g-3">
+              <% card_templates.each_with_index do |template, index| %>
+                <div class="col-4">
+                  <div class="card-template border border-2 rounded-3 p-2 text-center<%= ' active' if index == 0 %> cursor-pointer" data-template="<%= template[:name] %>">
+                    <img src="<%= image_path("#{template[:name]}.png") %>" alt="<%= template[:alt] %>" class="template-image img-fluid rounded">
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
