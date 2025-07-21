@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "eGift - サーティワンアイスクリーム" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "egift", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body>
+    <div class="egift-app">
+      <%= render 'egift/shared/header' %>
+
+      <main class="main-content">
+        <%= yield %>
+      </main>
+
+      <%= render 'egift/shared/footer' %>
+    </div>
+  </body>
+</html>
