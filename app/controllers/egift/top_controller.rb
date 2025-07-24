@@ -1,5 +1,4 @@
-class Egift::TopController < ApplicationController
-  layout "egift"
+class Egift::TopController < Egift::ApplicationController
 
   def index
     @items = Item.active.where(published: true)
