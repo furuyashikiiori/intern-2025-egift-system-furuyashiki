@@ -1,5 +1,4 @@
-class Admins::ItemsController < ApplicationController
-  layout 'admins/application'
+class Admins::ItemsController < Admins::ApplicationController
   before_action :set_item, only: [ :show, :edit, :update, :destroy ]
 
   def index
