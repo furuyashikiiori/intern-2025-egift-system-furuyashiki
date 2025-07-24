@@ -1,0 +1,13 @@
+<nav class="sidebar-custom text-white py-3 flex-shrink-0" style="width: 250px;">
+  <h2 class="h4 px-3 mb-4 pb-2 border-bottom border-white border-opacity-25 text-white">eGift CMS</h2>
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+      <%= link_to "ダッシュボード", admins_root_path, 
+          class: "nav-link nav-link-custom text-white border-bottom border-white border-opacity-10 rounded-0 #{'active' if controller_name == 'top'}" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "商品管理", admins_items_path, 
+          class: "nav-link nav-link-custom text-white border-bottom border-white border-opacity-10 rounded-0 #{'active' if controller_name == 'items'}" %>
+    </li>
+  </ul>
+</nav> 
