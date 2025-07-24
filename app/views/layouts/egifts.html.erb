@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "eGift販売サイト" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "eGifts販売サイト" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "egift", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "egifts", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body>
-    <div class="egift-app">
-      <%= render 'egift/shared/header' %>
+    <div class="egifts-app">
+      <%= render 'egifts/shared/header' %>
 
       <main class="main-content">
         <%= yield %>
       </main>
 
-      <%= render 'egift/shared/footer' %>
+      <%= render 'egifts/shared/footer' %>
     </div>
   </body>
-</html>
+</html> 

@@ -1,4 +1,4 @@
-class Egift::OrdersController < Egift::ApplicationController
+class Egifts::OrdersController < Egifts::ApplicationController
   def new
     @item_id = params[:item_id]
     @item = Item.active.where(published: true).find_by(id: @item_id)

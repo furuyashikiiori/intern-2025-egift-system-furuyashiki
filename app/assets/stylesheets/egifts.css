@@ -1,5 +1,5 @@
 /*
- * eGift System Styles with Bootstrap
+ * eGifts System Styles with Bootstrap
  * 
  * Minimal custom styles - most styling is handled by Bootstrap classes
  */
@@ -12,7 +12,7 @@
   --bs-primary-rgb: 243, 159, 110;
 }
 
-.egift-header {
+.egifts-header {
   background-color: var(--primary-color) !important;
 }
 
