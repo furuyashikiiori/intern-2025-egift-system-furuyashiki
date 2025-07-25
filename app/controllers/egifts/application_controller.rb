@@ -1,3 +1,3 @@
 class Egifts::ApplicationController < ApplicationController
-  layout "egifts"
+  layout "egifts/application"
 end
