@@ -27,7 +27,17 @@
 
   <div class="mb-3">
     <%= form.label :image, "商品画像", class: "form-label" %>
-    <%= form.file_field :image, class: "form-control" %>
+    <%= form.file_field :image, class: "form-control", accept: "image/*", id: "item_image" %>
+
+    <div id="image_preview" class="mt-2" style="display: none;">
+      <img id="preview_img" class="img-thumbnail" style="max-width: 200px; max-height: 200px;" alt="プレビュー">
+    </div>
+
+    <% if @item_form.item.image.attached? %>
+      <div id="existing_image" class="mt-2">
+        <%= image_tag @item_form.item.image, class: "img-thumbnail", style: "max-width: 200px; max-height: 200px;" %>
+      </div>
+    <% end %>
   </div>
 
   <div class="mb-3">
@@ -41,4 +51,36 @@
     <%= form.submit "保存", class: "btn btn-primary" %>
     <%= link_to "キャンセル", admins_items_path, class: "btn btn-secondary" %>
   </div>
-<% end %> 
+<% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const imageInput = document.getElementById('item_image');
+  const previewDiv = document.getElementById('image_preview');
+  const previewImg = document.getElementById('preview_img');
+  const existingImageDiv = document.getElementById('existing_image');
+
+  imageInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        previewImg.src = e.target.result;
+        previewDiv.style.display = 'block';
+        if (existingImageDiv) {
+          existingImageDiv.style.display = 'none';
+        }
+      };
+      
+      reader.readAsDataURL(file);
+    } else {
+      previewDiv.style.display = 'none';
+      if (existingImageDiv) {
+        existingImageDiv.style.display = 'block';
+      }
+    }
+  });
+});
+</script> 
