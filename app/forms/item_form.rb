@@ -5,7 +5,7 @@ class ItemForm
   attribute :name, :string
   attribute :price, :integer
   attribute :description, :string
-  attribute :published, :boolean, default: false
+  attribute :published, :boolean, default: true
 
   attr_accessor :image
 
@@ -17,7 +17,8 @@ class ItemForm
   def initialize(item = nil)
     @item = item || Item.new
     attributes = @item.attributes.slice("name", "price", "description", "published")
-    attributes["published"] = attributes["published"] || false
+    # 新しい商品の場合はデフォルトでtrue、既存商品の場合はDBの値をそのまま使用
+    attributes["published"] = @item.new_record? ? true : attributes["published"]
     super(attributes)
   end
 

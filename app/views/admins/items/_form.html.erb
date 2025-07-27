@@ -32,7 +32,7 @@
 
   <div class="mb-3">
     <div class="form-check">
-      <%= form.check_box :published, class: "form-check-input" %>
+      <%= form.check_box :published, class: "form-check-input", checked: @item_form.published %>
       <%= form.label :published, "公開する", class: "form-check-label" %>
     </div>
   </div>
