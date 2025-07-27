@@ -42,6 +42,10 @@ class Admins::ItemsController < Admins::ApplicationController
     end
 
     if @item_form.update
+      if item_form_params[:image].present?
+        @item.image.purge if @item.image.attached?
+        @item.reload
+      end
       redirect_to admins_item_path(@item), notice: "商品が正常に更新されました。"
     else
       render :edit, status: :unprocessable_entity
