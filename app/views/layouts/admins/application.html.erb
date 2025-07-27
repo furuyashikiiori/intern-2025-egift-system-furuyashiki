@@ -21,8 +21,8 @@
       <div class="flex-fill bg-light overflow-auto">
         <div class="container mt-4">
           <% if content_for?(:page_title) %>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h1><%= yield(:page_title) %></h1>
+            <h1><%= yield(:page_title) %></h1>
+            <div class="d-flex justify-content-end align-items-center mb-3">
               <%= yield(:page_actions) if content_for?(:page_actions) %>
             </div>
           <% end %>

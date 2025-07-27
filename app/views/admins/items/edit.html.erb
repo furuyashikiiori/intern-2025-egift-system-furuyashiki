@@ -1,13 +1,2 @@
-<div class="container mt-4">
-  <h1>商品編集</h1>
-
-  <div class="card">
-    <div class="card-body">
-      <%= render 'form' %>
-    </div>
-  </div>
-
-  <div class="mt-3">
-    <%= link_to "詳細を見る", admins_item_path(@item), class: "btn btn-secondary" %>
-  </div>
-</div>
+<% content_for :page_title, "商品編集" %>
+<%= render 'form' %>
