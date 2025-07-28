@@ -1,0 +1,12 @@
+<%#
+引数：path, active_controller, label
+%>
+
+<%= link_to path, class: ["ab-Menu-item", "ab-text-headline-s", ("is-selected" if controller_name == active_controller)] do %>
+  <div class="ab-flex ab-items-center ab-pr-4">
+    <div class="ab-Menu-item-label"><%= label %></div>
+    <svg class="ab-Menu-item-right-icon ab-Icon ab-ml-auto" fill="currentColor" viewBox="0 0 10 17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.60938 7.64062C9.11719 8.10938 9.11719 8.92969 8.60938 9.39844L2.35938 15.6484C1.89062 16.1562 1.07031 16.1562 0.601562 15.6484C0.09375 15.1797 0.09375 14.3594 0.601562 13.8906L5.95312 8.5L0.601562 3.14844C0.09375 2.67969 0.09375 1.85938 0.601562 1.39062C1.07031 0.882812 1.89062 0.882812 2.35938 1.39062L8.60938 7.64062Z" />
+    </svg>
+  </div>
+<% end %>
