@@ -1,0 +1,50 @@
+<section class="mb-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="h4 mb-0">2. 決済する</h2>
+    </div>
+    <div class="card-body">
+      <!-- メールアドレス入力 -->
+      <div class="row g-3">
+        <div class="col-12">
+          <label for="recipient_email" class="form-label">ご注文確認メール送信先</label>
+          <%= form.email_field :recipient_email, placeholder: "あなたのメールアドレス", class: "form-control", required: true %>
+          <div class="form-text">注文確認メールが送信されます</div>
+        </div>
+
+        <!-- 決済方法 -->
+        <div class="col-12">
+          <h5 class="mt-4 mb-3">決済方法</h5>
+        </div>
+
+        <div class="col-12">
+          <label for="card_number" class="form-label">カード番号</label>
+          <%= form.text_field :card_number, placeholder: "クレジットカード番号", class: "form-control", required: true, autocomplete: "cc-number" %>
+          <div class="form-text">ハイフンなしで入力してください</div>
+        </div>
+
+        <div class="col-12">
+          <label for="card_holder_name" class="form-label">カード名義</label>
+          <%= form.text_field :card_holder_name, placeholder: "カード名義", class: "form-control", required: true, autocomplete: "cc-name" %>
+        </div>
+
+        <div class="col-md-6">
+          <label for="expiry_month" class="form-label">有効期限</label>
+          <div class="row g-2">
+            <div class="col">
+              <%= form.select :expiry_month, options_for_select((1..12).map { |i| [sprintf("%02d", i), i] }), { prompt: "月" }, { class: "form-select", required: true, autocomplete: "cc-exp-month" } %>
+            </div>
+            <div class="col">
+              <%= form.select :expiry_year, options_for_select((2025..2035).map { |i| [i, i] }), { prompt: "年" }, { class: "form-select", required: true, autocomplete: "cc-exp-year" } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="cvv" class="form-label">セキュリティコード</label>
+          <%= form.text_field :cvv, placeholder: "セキュリティコード", class: "form-control", required: true, autocomplete: "cc-csc", maxlength: "4" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

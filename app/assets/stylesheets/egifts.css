@@ -1,0 +1,22 @@
+/*
+ * eGifts System Styles with Bootstrap
+ * 
+ * Minimal custom styles - most styling is handled by Bootstrap classes
+ */
+
+:root {
+  --primary-color: #F39F6E;
+  --secondary-color: #00C43E;
+  /* Bootstrap 5の変数をオーバーライド */
+  --bs-primary: #F39F6E;
+  --bs-primary-rgb: 243, 159, 110;
+}
+
+.egifts-header {
+  background-color: var(--primary-color) !important;
+}
+
+.card-template.active {
+  border-color: var(--primary-color) !important;
+  background-color: rgba(211, 45, 127, 0.1) !important;
+} 

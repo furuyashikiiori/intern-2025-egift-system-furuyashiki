@@ -1,0 +1,25 @@
+<%
+  carousel_images = [
+    { image: "key-visual-1.png", alt: "Hero Image 1" },
+    { image: "key-visual-2.png", alt: "Hero Image 2" }
+  ]
+%>
+
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-inner h-100">
+    <% carousel_images.each_with_index do |item, index| %>
+      <div class="carousel-item<%= ' active' if index == 0 %> h-100">
+        <%= image_tag item[:image], alt: item[:alt], class: "d-block w-100 h-100 object-fit-cover" %>
+      </div>
+    <% end %>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">前へ</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">次へ</span>
+  </button>
+</div>
