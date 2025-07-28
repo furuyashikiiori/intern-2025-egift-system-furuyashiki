@@ -1,0 +1,24 @@
+<%
+  receive_steps = [
+    {
+      # step1
+      title: "ギフトを受け取る",
+      description: "Facebook、メール、LINE、Twitterのいずれかでギフトが届きます。",
+      image: "receive-step-1.png"
+    },
+    {
+      # step2
+      title: "店舗に行く",
+      description: "ギフトが届いたら店舗に行きましょう。",
+      image: "receive-step-2.png"
+    },
+    {
+      # step3
+      title: "ギフトを提示する",
+      description: "店舗スタッフにギフト画面を提示しましょう。",
+      image: "receive-step-3.png"
+    }
+  ]
+%>
+
+<%= render "egifts/shared/steps_section", title: "受取り方", steps: receive_steps, bg_light: false %> 

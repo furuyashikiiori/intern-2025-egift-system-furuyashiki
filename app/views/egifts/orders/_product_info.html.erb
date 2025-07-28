@@ -1,0 +1,22 @@
+<section class="mb-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-4 mb-3 mb-md-0">
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image, alt: @item.name, class: "img-fluid rounded mh-200" %>
+        <% else %>
+          <div class="bg-light d-flex align-items-center justify-content-center rounded h-200">
+            <span class="text-muted">画像なし</span>
+          </div>
+        <% end %>
+        </div>
+        <div class="col-md-8">
+          <h1 class="h3 mb-3"><%= @item.name %></h1>
+          <p class="text-muted mb-3"><%= @item.description %></p>
+          <p class="h4 text-primary mb-2"><%= number_with_delimiter(@item.price) %>円</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

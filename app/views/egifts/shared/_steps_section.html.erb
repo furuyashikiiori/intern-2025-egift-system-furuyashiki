@@ -1,0 +1,26 @@
+<section class="py-5<%= ' bg-light' if bg_light %>">
+  <div class="container">
+    <h2 class="text-center mb-5"><%= title %></h2>
+    <div class="row">
+      <% steps.each_with_index do |step, index| %>
+        <div class="col-md-4 mb-4">
+          <div class="text-center">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+              <div
+                class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white me-3"
+                style="width: 50px; height: 50px;"
+              >
+                <span class="fw-bold"><%= index + 1 %></span>
+              </div>
+              <h3 class="h5 mb-0"><%= step[:title] %></h3>
+            </div>
+            <p class="mb-4"><%= step[:description] %></p>
+            <div class="mb-3">
+              <%= image_tag step[:image], alt: step[:title], class: "img-fluid mh-150" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section> 

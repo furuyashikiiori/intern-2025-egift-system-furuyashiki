@@ -1,0 +1,24 @@
+<%
+  send_steps = [
+    {
+      # step1
+      title: "ギフトを作る",
+      description: "贈るギフトとカードのデザインを選んだら相手へのメッセージを入力します。",
+      image: "send-step-1.png"
+    },
+    {
+      # step2
+      title: "贈り方を選ぶ",
+      description: "Twitter、メール、LINE、Facebookのいずれかで贈ることができます。 ※PCでのご購入の場合、LINEはご利用いただけません。",
+      image: "send-step-2.png"
+    },
+    {
+      # step3
+      title: "ギフトを贈る",
+      description: "ギフトURLを選択した方法で贈りましょう！",
+      image: "send-step-3.png"
+    }
+  ]
+%>
+
+<%= render "egifts/shared/steps_section", title: "贈り方", steps: send_steps, bg_light: true %> 
