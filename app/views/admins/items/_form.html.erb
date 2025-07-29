@@ -1,9 +1,9 @@
-<%= admin_item_form_with(@item_form) do |form| %>
-  <%= render 'layouts/admins/flash_message', errors: [@item_form.errors] %>
+<%= form_with(model: [:admins, @item], local: true, html: { multipart: true }) do |form| %>
+  <%= render 'layouts/admins/flash_message', errors: @item.errors %>
   
   <div class="ab-mb-4">
     <%= form.label :name, "商品名", class: "ab-Textfield-label" %>
-    <%= form.text_field :name, class: "ab-Textfield-input" %>
+    <%= form.text_field :name, maxlength: 255, class: "ab-Textfield-input" %>
   </div>
 
   <div class="ab-mb-4">
@@ -13,19 +13,19 @@
 
   <div class="ab-mb-4">
     <%= form.label :description, "商品説明", class: "ab-Textfield-label" %>
-    <%= form.text_area :description, class: "ab-Textfield-input ab-h-72" %>
+    <%= form.text_area :description, maxlength: 1000, class: "ab-Textfield-input ab-h-72" %>
   </div>
 
   <div class="ab-mb-4">
     <%= form.label :image, "商品画像", class: "ab-Textfield-label" %>
-    <%= form.file_field :image, class: "ab-Textfield-input", id: "item_image" %>
+    <%= form.file_field :image, accept: "image/*", class: "ab-Textfield-input", id: "item_image" %>
     
     <!-- 画像表示エリア -->
     <div id="image_display" class="ab-mt-2">
       <!-- 既存画像 -->
-      <% if @item_form.item.image&.attached? %>
+      <% if @item.persisted? && @item.image&.attached? %>
         <div id="existing_image">
-          <%= image_tag @item_form.item.image, class: "ab-w-160 ab-h-160" %>
+          <%= image_tag @item.image, class: "ab-w-160 ab-h-160" %>
         </div>
       <% end %>
       
@@ -39,7 +39,7 @@
   <div class="ab-bg-rest-primary ab-rounded-sm ab-border ab-p-2 ab-mb-4">
     <div class="ab-Checkbox-wrapper">
       <div class="ab-Checkbox">
-        <%= form.check_box :published, { checked: @item_form.published, class: "ab-Checkbox-input" } %>
+        <%= form.check_box :published, { class: "ab-Checkbox-input" } %>
         <span class="ab-Checkbox-box">
       </div>
       <%= form.label :published, "公開する", class: "ab-Checkbox-label" %>
@@ -47,7 +47,7 @@
   </div>
 
   <div>
-    <%= form.submit @item_form.persisted? ? "更新" : "作成", class: "ab-Button" %>
+    <%= form.submit @item.persisted? ? "更新" : "作成", class: "ab-Button" %>
     <%= link_to "戻る", admins_items_path, class: "ab-Button-neutral" %>
   </div>
 <% end %>
