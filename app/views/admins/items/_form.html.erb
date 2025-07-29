@@ -18,7 +18,22 @@
 
   <div class="ab-mb-4">
     <%= form.label :image, "商品画像", class: "ab-Textfield-label" %>
-    <%= form.file_field :image, class: "ab-Textfield-input" %>
+    <%= form.file_field :image, class: "ab-Textfield-input", id: "item_image" %>
+    
+    <!-- 画像表示エリア -->
+    <div id="image_display" class="ab-mt-2">
+      <!-- 既存画像 -->
+      <% if @item_form.item.image&.attached? %>
+        <div id="existing_image">
+          <%= image_tag @item_form.item.image, class: "ab-w-160 ab-h-160" %>
+        </div>
+      <% end %>
+      
+      <!-- プレビュー画像 -->
+      <div id="image_preview" class="ab-none">
+        <img id="preview_img" class="ab-w-160 ab-h-160" />
+      </div>
+    </div>
   </div>
 
   <div class="ab-bg-rest-primary ab-rounded-sm ab-border ab-p-2 ab-mb-4">
@@ -49,26 +64,36 @@ function initializeImagePreview() {
   imageInput.removeEventListener('change', handleImageChange);
   imageInput.addEventListener('change', handleImageChange);
 
+  function showImageElement(element) {
+    element?.classList.remove('ab-none');
+  }
+  
+  function hideImageElement(element) {
+    element?.classList.add('ab-none');
+  }
+  
+  function switchToPreview() {
+    showImageElement(previewDiv);
+    hideImageElement(existingImageDiv);
+  }
+  
+  function switchToExisting() {
+    hideImageElement(previewDiv);
+    showImageElement(existingImageDiv);
+  }
+  
   function handleImageChange(e) {
     const file = e.target.files[0];
     
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
-      
       reader.onload = function(e) {
         previewImg.src = e.target.result;
-        previewDiv.style.display = 'block';
-        if (existingImageDiv) {
-          existingImageDiv.style.display = 'none';
-        }
+        switchToPreview();
       };
-      
       reader.readAsDataURL(file);
     } else {
-      previewDiv.style.display = 'none';
-      if (existingImageDiv) {
-        existingImageDiv.style.display = 'block';
-      }
+      switchToExisting();
     }
   }
 }
