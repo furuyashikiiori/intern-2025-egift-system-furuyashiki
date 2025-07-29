@@ -39,7 +39,7 @@
   <div class="ab-bg-rest-primary ab-rounded-sm ab-border ab-p-2 ab-mb-4">
     <div class="ab-Checkbox-wrapper">
       <div class="ab-Checkbox">
-        <%= form.check_box :published, class: "ab-Checkbox-input" %>
+        <%= form.check_box :published, { checked: @item_form.published, class: "ab-Checkbox-input" } %>
         <span class="ab-Checkbox-box">
       </div>
       <%= form.label :published, "公開する", class: "ab-Checkbox-label" %>
