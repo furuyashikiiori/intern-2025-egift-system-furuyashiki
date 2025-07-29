@@ -32,7 +32,7 @@
   </div>
 
   <div>
-    <%= form.submit "作成", class: "ab-Button" %>
+    <%= form.submit @item_form.persisted? ? "更新" : "作成", class: "ab-Button" %>
     <%= link_to "戻る", admins_items_path, class: "ab-Button-neutral" %>
   </div>
 <% end %>
