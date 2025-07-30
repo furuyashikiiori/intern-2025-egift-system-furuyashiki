@@ -8,27 +8,27 @@
       class: "ab-Button-negative" %>
 <% end %>
 
-<table class="ab-Table ab-bg-rest-secondary ab-mt-4 ab-rounded-sm">
+<table class="ab-Table">
   <tbody class="ab-Table-body">
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">商品画像</td>
       <td class="ab-Table-cell">
         <%= image_tag @item.image, class: "ab-w-160 ab-h-160" %>
       </td>
     </tr>
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">商品名</td>
       <td class="ab-Table-cell"><%= @item.name %></td>
     </tr>
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">価格</td>
       <td class="ab-Table-cell"><%= format_price(@item.price) %></td>
     </tr>
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">公開状態</td>
       <td class="ab-Table-cell"><%= @item.published? ? "公開" : "非公開" %></td>
     </tr>
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">商品説明</td>
       <td class="ab-Table-cell">
         <% if @item.description.present? %>
@@ -36,11 +36,11 @@
         <% end %>
       </td>
     </tr>
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">作成日時</td>
       <td class="ab-Table-cell"><%= @item.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
     </tr>
-    <tr>
+    <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">最終更新日時</td>
       <td class="ab-Table-cell"><%= @item.updated_at.strftime("%Y年%m月%d日 %H:%M") %></td>
     </tr>
