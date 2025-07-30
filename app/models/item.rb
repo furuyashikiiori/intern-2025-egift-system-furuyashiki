@@ -12,13 +12,17 @@
 #  updated_at  :datetime         not null
 #
 class Item < ApplicationRecord
+  # Constants
+  NAME_MAX_LENGTH = 255
+  DESCRIPTION_MAX_LENGTH = 1000
+
   # Active Storage attachment for item image
   has_one_attached :image
 
   # Validations
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true, length: { maximum: NAME_MAX_LENGTH }
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :description, length: { maximum: 1000 }
+  validates :description, length: { maximum: DESCRIPTION_MAX_LENGTH }
   validate :image_must_be_present
   validate :image_validation
 

@@ -3,7 +3,7 @@
   
   <div class="ab-mb-4">
     <%= form.label :name, "商品名", class: "ab-Textfield-label" %>
-    <%= form.text_field :name, maxlength: 255, class: "ab-Textfield-input" %>
+    <%= form.text_field :name, maxlength: Item::NAME_MAX_LENGTH, class: "ab-Textfield-input" %>
   </div>
 
   <div class="ab-mb-4">
@@ -13,7 +13,7 @@
 
   <div class="ab-mb-4">
     <%= form.label :description, "商品説明", class: "ab-Textfield-label" %>
-    <%= form.text_area :description, maxlength: 1000, class: "ab-Textfield-input ab-h-72" %>
+    <%= form.text_area :description, maxlength: Item::DESCRIPTION_MAX_LENGTH, class: "ab-Textfield-input ab-h-72" %>
   </div>
 
   <div class="ab-mb-4">
