@@ -1,31 +1,26 @@
-<section class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-5">贈れるギフト</h2>
-    <div class="row g-4">
-      <% @items.each do |item| %>
-        <div class="col-md-6 col-lg-3">
-          <%= link_to new_egifts_order_path(item_id: item.id), class: "text-decoration-none" do %>
-            <div class="card h-80 shadow-sm">
-              <div class="ratio ratio-1x1">
-                <% if item.image.attached? %>
-                  <%= image_tag item.image, alt: item.name, class: "img-fluid w-80 h-80 object-fit-cover rounded-top" %>
-                <% else %>
-                  <div class="d-flex align-items-center justify-content-center bg-light w-80 h-80 rounded-top">
-                    <span class="text-muted">画像なし</span>
-                  </div>
-                <% end %>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title h5"><%= item.name %></h3>
-                <% if item.description.present? %>
-                  <p class="card-text text-muted"><%= item.description %></p>
-                <% end %>
-                <p class="card-text text-primary fw-bold"><%= number_with_delimiter(item.price) %>円</p>
-              </div>
+<section class="ab-flex ab-flex-column ab-mb-16">
+  <h2 class="ab-text-headline-l ab-font-bold ab-mb-8 ab-flex ab-flex-justify-center">贈れるギフト</h2>
+
+  <div class="ab-flex ab-flex-row ab-gap-4">
+    <% @items.each do |item| %>
+      <section class="ab-bg-rest-primary ab-rounded-md ab-border ab-p-4 ab-w-144">
+        <%= link_to new_egifts_order_path(item_id: item.id), class: "ab-LinkText ab-LinkText-quiet" do %>
+          <div class="ab-flex ab-flex-column">
+            <div>
+              <% if item.image.attached? %>
+                <%= image_tag item.image, alt: item.name, class: "ab-w-128 ab-h-128" %>
+              <% else %>
+                <span class="ab-text-body-m">画像なし</span>
+              <% end %>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+            <h2 class="ab-text-headline-m ab-wb-break-all ab-mt-4"><%= item.name %></h2>
+            <% if item.description.present? %>
+              <span class="ab-text-body-m ab-wb-break-all"><%= item.description %></span>
+            <% end %>
+            <span class="ab-text-body-m ab-font-bold"><%= number_with_delimiter(item.price) %>円</span>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
   </div>
 </section> 

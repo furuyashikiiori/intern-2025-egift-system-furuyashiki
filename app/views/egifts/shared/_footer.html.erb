@@ -1,14 +1,9 @@
-<footer class="bg-light border-top py-4 mt-5">
-  <div class="container">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-      <div class="text-muted small order-2 order-md-1 mb-2 mb-md-0">
-        © giftee Inc. All Rights Reserved.
-      </div>
-      <div class="d-flex flex-column flex-md-row align-items-center order-1 order-md-2 mb-2 mb-md-0">
-        <a href="#" class="text-muted text-decoration-none small me-3 mb-1 mb-md-0">利用規約</a>
-        <a href="#" class="text-muted text-decoration-none small me-3 mb-1 mb-md-0">プライバシーポリシー</a>
-        <a href="#" class="text-muted text-decoration-none small">特定商取引法に基づく表示</a>
-      </div>
-    </div>
+<div class="ab-flex ab-flex-row ab-items-center ab-border-t ab-p-4">
+  <span class="ab-text-body-s">© giftee Inc. All Rights Reserved.</span>
+  
+  <div class="ab-flex ab-flex-row ab-flex-1 ab-flex-justify-end ab-gap-4">
+    <%= link_to "利用規約", "", class: "ab-text-body-s ab-LinkText" %>
+    <%= link_to "プライバシーポリシー", "", class: "ab-text-body-s ab-LinkText" %>
+    <%= link_to "特定商取引法に基づく表示", "", class: "ab-text-body-s ab-LinkText" %>
   </div>
-</footer>
+</div>

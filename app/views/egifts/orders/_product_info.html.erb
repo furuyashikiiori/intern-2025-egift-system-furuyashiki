@@ -1,22 +1,20 @@
-<section class="mb-5">
-  <div class="card">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-md-4 mb-3 mb-md-0">
+<section class="ab-bg-rest-primary ab-rounded-md ab-border ab-p-4 ab-w-full">
+  <%= link_to new_egifts_order_path(item_id: @item.id), class: "ab-LinkText ab-LinkText-quiet" do %>
+    <div class="ab-flex ab-flex-row">
+      <div>
         <% if @item.image.attached? %>
-          <%= image_tag @item.image, alt: @item.name, class: "img-fluid rounded mh-200" %>
+          <%= image_tag @item.image, alt: @item.name, class: "ab-w-192 ab-h-192" %>
         <% else %>
-          <div class="bg-light d-flex align-items-center justify-content-center rounded h-200">
-            <span class="text-muted">画像なし</span>
-          </div>
+          <span class="ab-text-body-m">画像なし</span>
         <% end %>
-        </div>
-        <div class="col-md-8">
-          <h1 class="h3 mb-3"><%= @item.name %></h1>
-          <p class="text-muted mb-3"><%= @item.description %></p>
-          <p class="h4 text-primary mb-2"><%= number_with_delimiter(@item.price) %>円</p>
-        </div>
+      </div>
+      <div class="ab-flex ab-flex-column ab-mx-8 ab-my-4">
+        <h1 class="ab-text-headline-l ab-wb-break-all ab-mb-4"><%= @item.name %></h2>
+        <% if @item.description.present? %>
+          <span class="ab-text-body-m ab-wb-break-all ab-mb-4"><%= @item.description %></span>
+        <% end %>
+        <span class="ab-text-body-m ab-font-bold ab-mb-8"><%= number_with_delimiter(@item.price) %>円</span>
       </div>
     </div>
-  </div>
-</section> 
+  <% end %>
+</section>
