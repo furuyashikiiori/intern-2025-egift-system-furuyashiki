@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@giftee/abukuma-css": "^3.1.1",
-    "@hotwired/turbo-rails": "^8.0.16",
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3"
+    "@hotwired/turbo-rails": "^8.0.16"
   }
 }
