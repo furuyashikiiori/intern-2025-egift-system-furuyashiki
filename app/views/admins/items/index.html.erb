@@ -8,12 +8,12 @@
   <table class="ab-Table">
     <thead class="ab-Table-head">
       <tr>
-        <th class="ab-Table-head-cell">画像</th>
+        <th class="ab-Table-head-cell">商品画像</th>
         <th class="ab-Table-head-cell">商品名</th>
         <th class="ab-Table-head-cell">価格</th>
         <th class="ab-Table-head-cell">公開状態</th>
         <th class="ab-Table-head-cell">作成日</th>
-        <th class="ab-Table-head-cell">操作</th>
+        <th class="ab-Table-head-cell"></th>
       </tr>
     </thead>
     <tbody class="ab-Table-body">
@@ -26,11 +26,17 @@
           </td>
           <td class="ab-Table-cell"><%= link_to item.name, admins_item_path(item) %></td>
           <td class="ab-Table-cell"><%= format_price(item.price) %></td>
-          <td class="ab-Table-cell"><%= item.published? ? "公開" : "非公開" %></td>
+          <td class="ab-Table-cell">
+            <% if item.published? %>
+              <span class="ab-StatusLabel ab-StatusLabel-primary ab-StatusLabel-small">公開</span>
+            <% else %>
+              <span class="ab-StatusLabel ab-StatusLabel-outlined ab-StatusLabel-small">非公開</span>
+            <% end %>
+          </td>
           <td class="ab-Table-cell"><%= item.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
           <td class="ab-Table-cell">
             <%= link_to "詳細", admins_item_path(item), class: "ab-Button-neutral" %>
-            <%= link_to "編集", edit_admins_item_path(item), class: "ab-Button-neutral" %>
+            <%= link_to "編集", edit_admins_item_path(item), class: "ab-Button-outlined" %>
             <%= link_to "削除", admins_item_path(item), 
                 data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, 
                 class: "ab-Button-negative" %>
@@ -40,5 +46,5 @@
     </tbody>
   </table>
 <% else %>
-  <p>まだ商品が登録されていません。</p>
+  <p class="ab-mt-4">まだ商品が登録されていません。</p>
 <% end %>

@@ -2,7 +2,7 @@
 
 <% content_for :page_actions do %>
   <%= link_to "一覧に戻る", admins_items_path, class: "ab-Button-neutral" %>
-  <%= link_to "編集", edit_admins_item_path(@item), class: "ab-Button-neutral" %>
+  <%= link_to "編集", edit_admins_item_path(@item), class: "ab-Button-outlined" %>
   <%= link_to "削除", admins_item_path(@item), 
       data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, 
       class: "ab-Button-negative" %>
@@ -13,7 +13,7 @@
     <tr class="ab-Table-body-row">
       <td class="ab-Table-head-cell">商品画像</td>
       <td class="ab-Table-cell">
-        <%= image_tag @item.image.variant(resize_to_limit: [600, 600]) %>
+        <%= image_tag @item.image, class: "ab-w-160 ab-h-160" %>
       </td>
     </tr>
     <tr class="ab-Table-body-row">

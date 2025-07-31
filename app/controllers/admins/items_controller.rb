@@ -2,26 +2,20 @@ class Admins::ItemsController < Admins::ApplicationController
   before_action :set_item, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @items = Item.active
+    @items = Item.active.order(created_at: :desc)
   end
 
   def show
   end
 
   def new
-    @item_form = ItemForm.new
+    @item = Item.new
   end
 
   def create
-    @item_form = ItemForm.new
-    @item_form.assign_attributes(item_form_params)
+    @item = Item.new(item_params)
 
-    unless @item_form.valid?
-      render :new, status: :unprocessable_entity
-      return
-    end
-
-    if @item_form.save
+    if @item.save
       redirect_to admins_items_path, notice: "商品が正常に作成されました。"
     else
       render :new, status: :unprocessable_entity
@@ -29,19 +23,10 @@ class Admins::ItemsController < Admins::ApplicationController
   end
 
   def edit
-    @item_form = ItemForm.new(@item)
   end
 
   def update
-    @item_form = ItemForm.new(@item)
-    @item_form.assign_attributes(item_form_params)
-
-    unless @item_form.valid?
-      render :edit, status: :unprocessable_entity
-      return
-    end
-
-    if @item_form.update
+    if @item.update(item_params)
       redirect_to admins_item_path(@item), notice: "商品が正常に更新されました。"
     else
       render :edit, status: :unprocessable_entity
@@ -59,7 +44,7 @@ class Admins::ItemsController < Admins::ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def item_form_params
+  def item_params
     params.require(:item).permit(:name, :price, :description, :published, :image)
   end
 end
