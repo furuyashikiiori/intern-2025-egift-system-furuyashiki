@@ -7,7 +7,6 @@
 #  description :text
 #  name        :string
 #  price       :integer          not null
-#  published   :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

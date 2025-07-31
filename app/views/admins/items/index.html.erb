@@ -11,7 +11,7 @@
         <th class="ab-Table-head-cell">商品画像</th>
         <th class="ab-Table-head-cell">商品名</th>
         <th class="ab-Table-head-cell">価格</th>
-        <th class="ab-Table-head-cell">公開状態</th>
+
         <th class="ab-Table-head-cell">作成日</th>
         <th class="ab-Table-head-cell"></th>
       </tr>
@@ -26,13 +26,7 @@
           </td>
           <td class="ab-Table-cell"><%= link_to item.name, admins_item_path(item) %></td>
           <td class="ab-Table-cell"><%= format_price(item.price) %></td>
-          <td class="ab-Table-cell">
-            <% if item.published? %>
-              <span class="ab-StatusLabel ab-StatusLabel-primary ab-StatusLabel-small">公開</span>
-            <% else %>
-              <span class="ab-StatusLabel ab-StatusLabel-outlined ab-StatusLabel-small">非公開</span>
-            <% end %>
-          </td>
+
           <td class="ab-Table-cell"><%= item.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
           <td class="ab-Table-cell">
             <%= link_to "詳細", admins_item_path(item), class: "ab-Button-neutral" %>
