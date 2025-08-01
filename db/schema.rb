@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_01_100845) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_01_153751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -61,7 +61,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_01_100845) do
     t.index ["brand_id"], name: "index_items_on_brand_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "item_id", null: false
+    t.string "uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_tickets_on_brand_id"
+    t.index ["item_id"], name: "index_tickets_on_item_id"
+    t.index ["uuid"], name: "index_tickets_on_uuid", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "brands"
+  add_foreign_key "tickets", "brands"
+  add_foreign_key "tickets", "items"
 end
