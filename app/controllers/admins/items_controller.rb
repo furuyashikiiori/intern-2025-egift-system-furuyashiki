@@ -2,18 +2,18 @@ class Admins::ItemsController < Admins::ApplicationController
   before_action :set_item, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @items = Item.active.order(created_at: :desc)
+    @items = current_brand.items.active.order(created_at: :desc)
   end
 
   def show
   end
 
   def new
-    @item = Item.new
+    @item = current_brand.items.new
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = current_brand.items.new(item_params)
 
     if @item.save
       redirect_to admins_items_path, notice: "商品が正常に作成されました。"
@@ -41,7 +41,7 @@ class Admins::ItemsController < Admins::ApplicationController
   private
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = current_brand.items.active.find(params[:id])
   end
 
   def item_params
