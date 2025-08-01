@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_31_123025) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_01_100845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,15 +42,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_31_123025) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "domain", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain"], name: "index_brands_on_domain", unique: true
+  end
+
   create_table "items", force: :cascade do |t|
-    t.string "name"
+    t.bigint "brand_id", null: false
+    t.string "name", null: false
     t.integer "price", null: false
     t.text "description"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_items_on_brand_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "brands"
 end
