@@ -25,7 +25,6 @@
           </td>
           <td class="ab-Table-cell"><%= link_to item.name, admins_item_path(item) %></td>
           <td class="ab-Table-cell"><%= format_price(item.price) %></td>
-
           <td class="ab-Table-cell"><%= item.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
           <td class="ab-Table-cell">
             <%= link_to "詳細", admins_item_path(item), class: "ab-Button-neutral" %>
