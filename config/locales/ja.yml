@@ -7,7 +7,6 @@ ja:
         name: 商品名
         price: 価格
         description: 商品説明
-        published: 公開
   errors:
     format: "%{attribute}%{message}"
     messages:
@@ -22,5 +21,4 @@ ja:
         name: 商品名
         price: 価格
         description: 商品説明
-        published: 公開
         image: 商品画像

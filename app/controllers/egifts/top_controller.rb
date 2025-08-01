@@ -1,5 +1,5 @@
 class Egifts::TopController < Egifts::ApplicationController
   def index
-    @items = Item.active.where(published: true)
+    @items = Item.active
   end
 end
