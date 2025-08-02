@@ -1,4 +1,6 @@
 class Admins::SessionsController < Admins::ApplicationController
+  include Admins::Concerns::UserSession
+  
   def new
   end
 
@@ -6,6 +8,7 @@ class Admins::SessionsController < Admins::ApplicationController
     admin_user = AdminUser.find_by(email: session_params[:email])
 
     if admin_user&.authenticate(session_params[:password])
+      create_admin_user_session(admin_user)
       return redirect_to admins_root_path
     end
 
@@ -14,6 +17,7 @@ class Admins::SessionsController < Admins::ApplicationController
   end
 
   def destroy
+    delete_admin_user_session
     redirect_to action: :new
   end
 
