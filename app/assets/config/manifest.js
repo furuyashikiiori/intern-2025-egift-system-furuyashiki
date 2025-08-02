@@ -2,4 +2,3 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../builds .js
 //= link application.js
-//= link egift_stores.css 

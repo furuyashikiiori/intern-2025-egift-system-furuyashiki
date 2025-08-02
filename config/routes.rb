@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "egift_stores/top#index"
 
-  # eGift Stores namespace
   namespace :egift_stores do
     root "top#index"
     resources :orders, only: [ :new, :create, :show ]
