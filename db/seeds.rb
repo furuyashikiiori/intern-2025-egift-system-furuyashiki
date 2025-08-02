@@ -17,6 +17,11 @@ sample_items = [
   { name: "紅茶アソートギフト", price: 1500, description: "香り豊かな紅茶のアソートセットです。" }
 ]
 
+sample_admin_users = [
+  { email: "tanaka-hanako@example.com", name: "田中 花子", password: "bd78UsRcUFwR", password_confirmation: "bd78UsRcUFwR" },
+  { email: "nakamura-jiro@example.com", name: "中村 次郎", password: "YNgKQBx5RVHt", password_confirmation: "YNgKQBx5RVHt" },
+]
+
 sample_brands.each do |attrs|
   Brand.create!(attrs)
   puts "作成しました: #{attrs[:name]} #{attrs[:domain]}"
@@ -37,4 +42,13 @@ File.open(sample_image_path, "rb") do |image_file|
     )
     puts "作成しました: #{attrs[:name]} #{attrs[:price]} #{attrs[:description]}"
   end
+end
+
+sample_admin_users.each do |attrs|
+  AdminUser.create!(
+    attrs.merge(
+      brand_id: Brand.first.id,
+    )
+  )
+  puts "作成しました: #{attrs[:email]} #{attrs[:name]}"
 end
