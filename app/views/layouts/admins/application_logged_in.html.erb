@@ -10,7 +10,21 @@
   </head>
 
   <body data-theme="coral-light" class="ab-bg-base">
-    <main>
+    <%= render 'layouts/admins/sidebar' %>
+
+    <main class="ab-flex ab-flex-column ab-px-10 ab-pt-6 ab-pb-2" style="margin-left: 300px;">
+      <% if content_for?(:page_title) %>
+        <h1 class="ab-text-headline-l ab-font-bold ab-mb-6">
+          <%= yield(:page_title) %>
+        </h1>
+      <% end %>
+
+      <% if content_for?(:page_actions) %>
+        <div class="ab-flex ab-flex-justify-start ab-gap-1">
+          <%= yield(:page_actions) %>
+        </div>
+      <% end %>
+
       <%= render 'layouts/admins/flash_message', errors: [] %>
       
       <%= yield %>

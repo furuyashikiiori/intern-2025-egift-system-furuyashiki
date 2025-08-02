@@ -1,4 +1,4 @@
-class Admins::TopController < Admins::ApplicationController
+class Admins::TopController < Admins::ApplicationLoggedInController
   def index
   end
 end
