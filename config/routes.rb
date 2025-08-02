@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
   namespace :egift_stores do
     root "top#index"
-    resources :orders, only: [ :new, :create, :show ]
+    resources :orders, only: [ :new, :create, :show ] do
+      member do
+        get :order_complete
+      end
+    end
   end
+
+  resources :tickets, only: [ :show ], param: :uuid
 end

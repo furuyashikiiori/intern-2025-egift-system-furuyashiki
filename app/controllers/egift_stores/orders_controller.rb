@@ -2,9 +2,23 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def new
     @item_id = params[:item_id]
     @item = current_brand.items.active.find_by(id: @item_id)
+  end
 
-    if @item.nil?
-      redirect_to root_path, alert: "指定されたアイテムが見つかりません。"
-    end
+  def create
+    @item = current_brand.items.active.find_by(id: params[:item_id])
+
+    @ticket = Ticket.new(
+      brand: current_brand,
+      item: @item,
+      uuid: SecureRandom.uuid
+    )
+
+    @ticket.save!
+
+    redirect_to order_complete_egift_stores_order_path(@ticket.id)
+  end
+
+  def order_complete
+    @ticket = Ticket.find(params[:id])
   end
 end
