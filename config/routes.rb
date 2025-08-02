@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admins do
-    root 'top#index'
+    root "top#index"
     resources :items, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "egifts/top#index"
+  root "egift_stores/top#index"
 
   # eGifts namespace
-  namespace :egifts do
+  namespace :egift_stores do
     root "top#index"
     resources :orders, only: [ :new, :create, :show ]
   end

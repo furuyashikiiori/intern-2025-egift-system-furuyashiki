@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "egifts/application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "egifts/application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag "egift_stores/application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "egift_stores/application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body data-theme="coral-light" class="ab-bg-base">
     <main class="ab-flex ab-flex-column ab-mx-8">
-      <%= render 'egifts/shared/header' %>
+      <%= render 'egift_stores/shared/header' %>
       <%= yield %>
-      <%= render 'egifts/shared/footer' %>
+      <%= render 'egift_stores/shared/footer' %>
     </main>
   </body>
 </html> 
