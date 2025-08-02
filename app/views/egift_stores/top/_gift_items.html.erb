@@ -4,7 +4,7 @@
   <div class="ab-flex ab-flex-row ab-gap-4">
     <% @items.each do |item| %>
       <section class="ab-bg-rest-primary ab-rounded-md ab-border ab-p-4 ab-w-144">
-        <%= link_to new_egifts_order_path(item_id: item.id), class: "ab-LinkText ab-LinkText-quiet" do %>
+        <%= link_to new_egift_stores_order_path(item_id: item.id), class: "ab-LinkText ab-LinkText-quiet" do %>
           <div class="ab-flex ab-flex-column">
             <div>
               <% if item.image.attached? %>

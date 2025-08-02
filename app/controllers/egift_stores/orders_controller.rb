@@ -1,4 +1,4 @@
-class Egifts::OrdersController < Egifts::ApplicationController
+class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def new
     @item_id = params[:item_id]
     @item = current_brand.items.active.find_by(id: @item_id)
