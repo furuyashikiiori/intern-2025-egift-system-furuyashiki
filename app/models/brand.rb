@@ -15,4 +15,5 @@
 class Brand < ApplicationRecord
   has_many :items
   has_many :tickets
+  has_many :admin_users
 end
