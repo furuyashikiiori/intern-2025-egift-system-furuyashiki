@@ -6,5 +6,6 @@
   <ul class="ab-Menu ab-w-full ab-px-2" role="menu">
     <%= render 'layouts/admins/sidebar_item', path: admins_root_path, active_controller: 'top', label: 'ダッシュボード' %>
     <%= render 'layouts/admins/sidebar_item', path: admins_items_path, active_controller: 'items', label: '商品管理' %>
+    <%= button_to "ログアウト", admins_session_path(current_admin_user.id), method: :delete, class: "ab-Button-text ab-w-full" %>
   </ul>
 </aside>
