@@ -5,10 +5,19 @@
 #  id          :bigint           not null, primary key
 #  deleted_at  :datetime
 #  description :text
-#  name        :string
+#  name        :string           not null
 #  price       :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  brand_id    :bigint           not null
+#
+# Indexes
+#
+#  index_items_on_brand_id  (brand_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (brand_id => brands.id)
 #
 class Item < ApplicationRecord
   # Constants
@@ -17,6 +26,9 @@ class Item < ApplicationRecord
 
   # Active Storage attachment for item image
   has_one_attached :image
+
+  belongs_to :brand
+  has_many :tickets
 
   # Validations
   validates :name, presence: true, length: { maximum: NAME_MAX_LENGTH }
