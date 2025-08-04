@@ -7,9 +7,8 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def create
     @item = current_brand.items.active.find_by(id: params[:item_id])
 
-    @ticket = Ticket.new(
+    @ticket = @item.tickets.create!(
       brand: current_brand,
-      item: @item,
       uuid: SecureRandom.uuid
     )
 
