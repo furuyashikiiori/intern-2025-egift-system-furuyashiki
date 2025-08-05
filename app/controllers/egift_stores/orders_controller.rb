@@ -20,10 +20,4 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def show
     @ticket = current_brand.tickets.find_by(uuid: params[:id])
   end
-
-  private
-
-  def current_brand
-    @current_brand ||= current_admin_user.brand
-  end
 end
