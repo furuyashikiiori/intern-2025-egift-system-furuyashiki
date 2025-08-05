@@ -12,8 +12,6 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
       uuid: SecureRandom.uuid
     )
 
-    @ticket.save!
-
     redirect_to egift_stores_order_path(@ticket.uuid)
   end
 

@@ -1,5 +1,4 @@
 class TicketsController < ApplicationController
-  include Admins::Concerns::UserSession
   layout "tickets/application"
 
   def show
