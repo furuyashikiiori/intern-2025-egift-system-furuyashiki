@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  layout "tickets_application"
+  layout "tickets/application"
 
   def show
     @ticket = Ticket.find_by(uuid: params[:uuid])
