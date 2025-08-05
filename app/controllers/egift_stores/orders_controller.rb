@@ -14,7 +14,7 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
 
     @ticket.save!
 
-    redirect_to egift_stores_order_path(@ticket)
+    redirect_to egift_stores_order_path(@ticket.uuid)
   end
 
   def show
