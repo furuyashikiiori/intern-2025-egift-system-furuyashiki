@@ -14,10 +14,10 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
 
     @ticket.save!
 
-    redirect_to order_complete_egift_stores_order_path(@ticket.id)
+    redirect_to egift_stores_order_path(@ticket)
   end
 
-  def order_complete
+  def show
     @ticket = Ticket.find(params[:id])
   end
 end
