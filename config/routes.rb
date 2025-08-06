@@ -17,4 +17,8 @@ Rails.application.routes.draw do
     root "top#index"
     resources :orders, only: [ :new, :create, :show ]
   end
+
+  namespace :egifts do
+    resources :tickets, only: [ :show ], param: :uuid
+  end
 end

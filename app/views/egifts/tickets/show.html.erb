@@ -1,0 +1,44 @@
+<div class="ab-flex ab-flex-column ab-items-center">
+  <div class="ab-bg-rest-primary ab-rounded-lg ab-p-6 ab-border ab-mb-6 ab-text-center">
+    <!-- 商品画像 -->
+    <div class="ab-mb-6">
+      <% if @ticket.item.image.attached? %>
+        <%= image_tag @ticket.item.image, 
+            alt: @ticket.item.name, 
+            class: "ab-w-100 ab-h-100 ab-rounded-lg" %>
+      <% else %>
+        <div class="ab-w-100 ab-h-100 ab-rounded-lg ab-flex ab-items-center">
+          <span>画像なし</span>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- バーコード -->
+    <div class="ab-mb-6">
+      <%= image_tag "sample_barcode.png", 
+          alt: "バーコード",
+          class: "ab-h-72 ab-w-192" %>
+    </div>
+
+    <!-- 発行日 -->
+    <div class="ab-mb-6">
+      <p>
+        発行日: <%= @ticket.created_at.strftime("%Y年%m月%d日") %>
+      </p>
+    </div>
+
+    <!-- 商品名 -->
+    <div class="ab-mb-4">
+      <h1 class="ab-text-headline-m ab-font-bold ab-mb-2">
+        <%= @ticket.item.name %>
+      </h1>
+    </div>
+
+    <!-- 価格 -->
+    <div>
+      <p class="ab-text-headline-m ab-font-bold">
+        <%= number_with_delimiter(@ticket.item.price) %>円
+      </p>
+    </div>
+  </div>
+</div>
