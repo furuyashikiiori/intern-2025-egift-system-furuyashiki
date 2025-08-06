@@ -1,5 +1,5 @@
 class Egifts::ApplicationController < ApplicationController
-  layout "tickets/application"
+  layout "egifts/application"
 
   private
 
