@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     resources :orders, only: [ :new, :create, :show ]
   end
 
-  resources :tickets, only: [ :show ], param: :uuid
+  namespace :egifts do
+    resources :tickets, only: [ :show ], param: :uuid
+  end
 end

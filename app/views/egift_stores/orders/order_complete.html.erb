@@ -24,7 +24,7 @@
       <div class="ab-flex ab-my-2">
         <input
           type="text"
-          value="<%= request.base_url + ticket_path(@ticket.uuid) %>"
+          value="<%= request.base_url + egifts_ticket_path(@ticket.uuid) %>"
           readonly
           class="ab-flex-1 ab-border ab-rounded-md ab-text-center"
           id="ticket-url"
@@ -39,7 +39,7 @@
       <small class="ab-text-center ab-mb-4">このURLを共有してチケットを贈ることができます</small>
       <div class="ab-flex ab-flex-column ab-my-2">
         <%= link_to "チケットを確認する",
-            ticket_path(@ticket.uuid),
+            egifts_ticket_path(@ticket.uuid),
             class: "ab-Button-outlined" %>
       </div>
     </div>
