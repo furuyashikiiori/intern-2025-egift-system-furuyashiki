@@ -1,5 +1,5 @@
 class Admins::ApplicationLoggedInController < Admins::ApplicationController
-  include Admins::Concerns::UserSession
+  include Admins::UserSession
 
   before_action :ensure_logged_in
   helper_method :current_brand

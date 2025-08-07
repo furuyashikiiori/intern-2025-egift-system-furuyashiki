@@ -1,5 +1,5 @@
 class Admins::SessionsController < Admins::ApplicationController
-  include Admins::Concerns::UserSession
+  include Admins::UserSession
   
   def new
   end
