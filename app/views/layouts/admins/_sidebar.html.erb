@@ -1,5 +1,5 @@
 <aside class="ab-flex ab-flex-column ab-items-center ab-border-r ab-min-h-screen ab-position-fixed" style="width: 300px;">
-  <div class="ab-px-4 ab-py-20">
+  <div class="ab-px-4 ab-py-16">
     <h1 class="ab-text-headline-l ab-font-bold ab-text-center ab-mb-4">eGift 管理画面</h1>
     <h2 class="ab-text-headline-m ab-text-center">- <%= current_brand.name %> -</h2>
   </div>
@@ -8,7 +8,7 @@
     <%= render 'layouts/admins/sidebar_item', path: admins_root_path, active_controller: 'top', label: 'ダッシュボード' %>
     <%= render 'layouts/admins/sidebar_item', path: admins_items_path, active_controller: 'items', label: '商品管理' %>
     <div class="ab-mt-auto"></div>
-    <section class="ab-bg-rest-primary ab-rounded-lg ab-flex ab-flex-column ab-p-4 ab-mb-2">
+    <section class="ab-border-t ab-flex ab-flex-column ab-px-2 ab-py-4">
       <p class="ab-text-body-m"><%= current_admin_user.name %></p>
       <span class="ab-text-body-s ab-mb-4"><%= current_admin_user.email %></span>
       <%= button_to "ログアウト", admins_session_path(current_admin_user.id), method: :delete, class: "ab-Button-neutral ab-w-full" %>

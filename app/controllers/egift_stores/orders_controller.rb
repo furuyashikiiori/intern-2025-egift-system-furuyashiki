@@ -1,12 +1,10 @@
 class EgiftStores::OrdersController < EgiftStores::ApplicationController
+  before_action :set_item, only: [:new, :create]
+  
   def new
-    @item_id = params[:item_id]
-    @item = current_brand.items.active.find_by(id: @item_id)
   end
 
   def create
-    @item = current_brand.items.active.find_by(id: params[:item_id])
-
     @ticket = @item.tickets.create!(
       brand: current_brand,
       uuid: SecureRandom.uuid
@@ -17,5 +15,11 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
 
   def show
     @ticket = current_brand.tickets.find_by(uuid: params[:id])
+  end
+
+  private
+
+  def set_item
+    @item = current_brand.items.active.find_by(id: params[:item_id])
   end
 end
