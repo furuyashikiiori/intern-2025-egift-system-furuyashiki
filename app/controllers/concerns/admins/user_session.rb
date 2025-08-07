@@ -1,4 +1,4 @@
-module Admins::Concerns::UserSession
+module Admins::UserSession
   extend ActiveSupport::Concern
 
   SESSION_KEY_ADMIN_USER_ID = 'admin_user_id'
