@@ -2,7 +2,7 @@
   <h1 class="ab-text-headline-l ab-font-bold ab-text-center ab-mt-4 ab-mb-12">管理画面</h1>
 
   <%= form_with scope: :session, url: admins_sessions_path do |f| %>
-    <%= render 'layouts/admins/flash_message', errors: [] %>
+    <%= render 'admins/shared/flash_message', errors: [] %>
     <fieldset class="ab-Fieldset">
       <div class="ab-Fieldset-content ab-mb-4">
         <%= f.text_field :email, class: "ab-Textfield-input", placeholder: "メールアドレス" %>

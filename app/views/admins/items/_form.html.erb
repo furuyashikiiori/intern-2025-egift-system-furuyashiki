@@ -1,5 +1,5 @@
 <%= form_with(model: [:admins, @item], local: true, html: { multipart: true }) do |form| %>
-  <%= render 'layouts/admins/flash_message', errors: @item.errors %>
+  <%= render 'admins/shared/flash_message', errors: @item.errors %>
   
   <div class="ab-mb-4">
     <%= form.label :name, "商品名", class: "ab-Textfield-label" %>
@@ -18,22 +18,10 @@
 
   <div class="ab-mb-4">
     <%= form.label :image, "商品画像", class: "ab-Textfield-label" %>
-    <%= form.file_field :image, accept: "image/*", class: "ab-Textfield-input", id: "item_image" %>
+    <%= form.file_field :image, accept: "image/*", class: "ab-Textfield-input", id: "item_image", onchange: "handleImagePreview(this)" %>
     
-    <!-- 画像表示エリア -->
-    <div id="image_display" class="ab-mt-2">
-      <!-- 既存画像 -->
-      <% if @item.persisted? && @item.image&.attached? %>
-        <div id="existing_image">
-          <%= image_tag @item.image, class: "ab-w-160 ab-h-160" %>
-        </div>
-      <% end %>
-      
-      <!-- プレビュー画像 -->
-      <div id="image_preview" class="ab-none">
-        <img id="preview_img" class="ab-w-160 ab-h-160" />
-      </div>
-    </div>
+    <!-- プレビュー画像 -->
+    <%= image_tag @item.image.attached? ? url_for(@item.image) : "", id: "selectedImagePreview", class: "ab-w-160 ab-h-160 ab-mt-2" %>
   </div>
 
   <div>
@@ -43,52 +31,9 @@
 <% end %>
 
 <script>
-function initializeImagePreview() {
-  const imageInput = document.getElementById('item_image');
-  const previewDiv = document.getElementById('image_preview');
-  const previewImg = document.getElementById('preview_img');
-  const existingImageDiv = document.getElementById('existing_image');
-
-  if (!imageInput) return;
-
-  imageInput.removeEventListener('change', handleImageChange);
-  imageInput.addEventListener('change', handleImageChange);
-
-  function showImageElement(element) {
-    element?.classList.remove('ab-none');
+  function handleImagePreview(input) {
+    const file = input.files[0];
+    const selectedImagePreview = document.getElementById("selectedImagePreview");
+    selectedImagePreview.src = file ? URL.createObjectURL(file) : "";
   }
-  
-  function hideImageElement(element) {
-    element?.classList.add('ab-none');
-  }
-  
-  function switchToPreview() {
-    showImageElement(previewDiv);
-    hideImageElement(existingImageDiv);
-  }
-  
-  function switchToExisting() {
-    hideImageElement(previewDiv);
-    showImageElement(existingImageDiv);
-  }
-  
-  function handleImageChange(e) {
-    const file = e.target.files[0];
-    
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        previewImg.src = e.target.result;
-        switchToPreview();
-      };
-      reader.readAsDataURL(file);
-    } else {
-      switchToExisting();
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', initializeImagePreview);
-document.addEventListener('turbo:load', initializeImagePreview);
-document.addEventListener('turbo:render', initializeImagePreview);
 </script> 

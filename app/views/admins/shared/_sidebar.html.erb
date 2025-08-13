@@ -5,8 +5,8 @@
   </div>
 
   <ul class="ab-Menu ab-w-full ab-flex ab-flex-column ab-flex-1 ab-px-2" role="menu">
-    <%= render 'layouts/admins/sidebar_item', path: admins_root_path, active_controller: 'top', label: 'ダッシュボード' %>
-    <%= render 'layouts/admins/sidebar_item', path: admins_items_path, active_controller: 'items', label: '商品管理' %>
+    <%= render 'admins/shared/sidebar_item', path: admins_root_path, active_controller: 'top', label: 'ダッシュボード' %>
+    <%= render 'admins/shared/sidebar_item', path: admins_items_path, active_controller: 'items', label: '商品管理' %>
     <div class="ab-mt-auto"></div>
     <section class="ab-border-t ab-flex ab-flex-column ab-px-2 ab-py-4">
       <p class="ab-text-body-m"><%= current_admin_user.name %></p>

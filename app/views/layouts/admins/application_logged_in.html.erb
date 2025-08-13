@@ -10,7 +10,7 @@
   </head>
 
   <body data-theme="coral-light" class="ab-bg-base">
-    <%= render 'layouts/admins/sidebar' %>
+    <%= render 'admins/shared/sidebar' %>
 
     <main class="ab-flex ab-flex-column ab-px-10 ab-pt-6 ab-pb-2" style="margin-left: 300px;">
       <% if content_for?(:page_title) %>
@@ -25,7 +25,7 @@
         </div>
       <% end %>
 
-      <%= render 'layouts/admins/flash_message', errors: [] %>
+      <%= render 'admins/shared/flash_message', errors: [] %>
       
       <%= yield %>
     </main>
