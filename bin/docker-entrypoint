@@ -20,4 +20,7 @@ if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   echo "Database prepared."
 fi
 
+echo "Installing JavaScript packages..."
+npm install
+
 exec "${@}"
