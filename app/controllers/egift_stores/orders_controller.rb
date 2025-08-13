@@ -7,7 +7,6 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def create
     @ticket = @item.tickets.create!(
       brand: current_brand,
-      public_key: SecureRandom.uuid,
       content: SecureRandom.uuid,
     )
 

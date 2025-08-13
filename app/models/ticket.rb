@@ -25,4 +25,12 @@
 class Ticket < ApplicationRecord
   belongs_to :brand
   belongs_to :item
+
+  before_create :set_public_key
+
+  private
+
+  def set_public_key
+    self.public_key ||= SecureRandom.uuid
+  end
 end
