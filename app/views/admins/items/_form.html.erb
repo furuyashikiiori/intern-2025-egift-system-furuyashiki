@@ -1,5 +1,5 @@
 <%= form_with(model: [:admins, @item], local: true, html: { multipart: true }) do |form| %>
-  <%= render 'layouts/admins/flash_message', errors: @item.errors %>
+  <%= render 'admins/shared/flash_message', errors: @item.errors %>
   
   <div class="ab-mb-4">
     <%= form.label :name, "商品名", class: "ab-Textfield-label" %>
