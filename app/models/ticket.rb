@@ -3,7 +3,8 @@
 # Table name: tickets
 #
 #  id         :bigint           not null, primary key
-#  uuid       :string           not null
+#  content    :string           not null
+#  public_key :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  brand_id   :bigint           not null
@@ -11,9 +12,10 @@
 #
 # Indexes
 #
-#  index_tickets_on_brand_id  (brand_id)
-#  index_tickets_on_item_id   (item_id)
-#  index_tickets_on_uuid      (uuid) UNIQUE
+#  index_tickets_on_brand_id    (brand_id)
+#  index_tickets_on_content     (content) UNIQUE
+#  index_tickets_on_item_id     (item_id)
+#  index_tickets_on_public_key  (public_key) UNIQUE
 #
 # Foreign Keys
 #

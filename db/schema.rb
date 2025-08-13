@@ -75,12 +75,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_02_040525) do
   create_table "tickets", force: :cascade do |t|
     t.bigint "brand_id", null: false
     t.bigint "item_id", null: false
-    t.string "uuid", null: false
+    t.string "public_key", null: false
+    t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_tickets_on_brand_id"
+    t.index ["content"], name: "index_tickets_on_content", unique: true
     t.index ["item_id"], name: "index_tickets_on_item_id"
-    t.index ["uuid"], name: "index_tickets_on_uuid", unique: true
+    t.index ["public_key"], name: "index_tickets_on_public_key", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
