@@ -4,19 +4,19 @@
 
 <% flash.each do |key, message| %>
   <% alert_class = case key.to_sym
-    when :alert  then "ab-text-negative"
-    when :notice then "ab-text-positive"
-    else "ab-text-info"
+    when :alert  then "ab-InlineAlert-negative"
+    when :notice then "ab-InlineAlert-positive"
+    else "ab-InlineAlert-info"
   end %>
-  <section class="ab-bg-rest-accent ab-border ab-rounded-sm ab-p-4 ab-my-4">
-    <p class="<%= alert_class %> ab-font-bold"><%= message %></p>
-  </section>
+  <div class="ab-InlineAlert <%= alert_class %> ab-my-4">
+    <div class="ab-InlineAlert-description"><%= message %></div>
+  </div>
 <% end %>
 
 <% if errors.try(:full_messages).present? %>
   <% errors.try(:full_messages).each do |message| %>
-    <section class="ab-bg-rest-accent ab-border ab-rounded-sm ab-p-4 ab-my-4">
-      <p class="ab-text-negative ab-font-bold"><%= message %></p>
-    </section>
+    <div class="ab-InlineAlert ab-InlineAlert-negative ab-my-4">
+      <div class="ab-InlineAlert-description"><%= message %></div>
+    </div>
   <% end %>
 <% end %>
