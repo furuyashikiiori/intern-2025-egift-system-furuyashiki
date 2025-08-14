@@ -1,16 +1,17 @@
 # See https://git-scm.com/docs/gitattributes for more about git attribute files.
 # Mark the database schema as having been generated.
 db/schema.rb linguist-generated
+
 # Mark any vendored files as having been vendored.
 vendor/* linguist-vendored
 config/credentials/*.yml.enc diff=rails_credentials
 config/credentials.yml.enc diff=rails_credentials
-# 強制的にLF改行を使う（Windows環境では改行コードが異なるため）
-* text eol=lf
-# 画像ファイルはGit LFSで管理
-*.png filter=lfs diff=lfs merge=lfs -text
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.jpeg filter=lfs diff=lfs merge=lfs -text
-*.gif filter=lfs diff=lfs merge=lfs -text
-*.webp filter=lfs diff=lfs merge=lfs -text
-*.heic filter=lfs diff=lfs merge=lfs -text
+
+# すべてのテキストファイルでLF改行を使用する（Windows環境では改行コードが異なるため）
+* text=auto eol=lf
+
+# 画像などのバイナリファイルは明示的にバイナリ指定する
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
