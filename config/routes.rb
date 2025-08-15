@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
 
   namespace :egifts do
-    resources :tickets, only: [ :show ], param: :uuid
+    resources :tickets, only: [ :show ], param: :public_key
   end
 end

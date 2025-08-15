@@ -7,14 +7,14 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def create
     @ticket = @item.tickets.create!(
       brand: current_brand,
-      uuid: SecureRandom.uuid
+      content: TicketContentService.generate,
     )
 
-    redirect_to egift_stores_order_path(@ticket.uuid)
+    redirect_to egift_stores_order_path(@ticket.public_key)
   end
 
   def show
-    @ticket = current_brand.tickets.find_by(uuid: params[:id])
+    @ticket = current_brand.tickets.find_by(public_key: params[:id])
   end
 
   private
