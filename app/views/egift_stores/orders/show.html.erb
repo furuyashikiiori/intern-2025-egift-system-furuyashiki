@@ -1,83 +1,26 @@
-<div class="ab-flex ab-flex-column ab-gap-8 ab-my-8">
-  <!-- 完了メッセージ -->
-  <section class="ab-bg-rest-primary ab-rounded-md ab-border ab-p-6 ">
-    <div class="ab-text-center">
-      <h1 class="ab-text-headline-l ab-font-bold ab-mb-4">
-        ご注文完了
-      </h1>
-      <p class="ab-mb-4">
-        ご注文ありがとうございます。<br>
-        チケットが発行されました。
-      </p>
-      <p>
-        下記からチケットをご確認いただけます。
-      </p>
-    </div>
-  </section>
+<!-- 完了メッセージ -->
+<section class="ab-bg-rest-primary ab-rounded-md ab-border ab-p-6 ab-mb-8">
+  <div class="ab-text-center">
+    <h1 class="ab-text-headline-l ab-font-bold ab-mb-4">ご注文完了</h1>
+    <p class="ab-mb-4">
+      ご注文ありがとうございます。<br>
+      チケットが発行されました。
+    </p>
+    <p>下記からチケットをご確認いただけます。</p>
+  </div>
+</section>
 
-  <!-- チケットURL共有 -->
-  <section class="ab-bg-rest-primary ab-rounded-md ab-border ab-p-6">
-    <div class="ab-text-center ab-mb-4">
-      <h3 class="ab-text-headline-m ab-font-bold">チケットURL</h3>
-    </div>
-    <div class="ab-flex ab-flex-column">
-      <div class="ab-flex ab-my-2">
-        <input
-          type="text"
-          value="<%= request.base_url + egifts_ticket_path(@ticket.public_key) %>"
-          readonly
-          class="ab-flex-1 ab-border ab-rounded-md ab-text-center"
-          id="ticket-url"
-        >
-        <button
-          onclick="copyTicketUrl()"
-          class="ab-Button"
-        >
-          コピー
-        </button>
-      </div>
-      <small class="ab-text-center ab-mb-4">このURLを共有してチケットを贈ることができます</small>
-      <div class="ab-flex ab-flex-column ab-my-2">
-        <%= link_to "チケットを確認する",
-            egifts_ticket_path(@ticket.public_key),
-            class: "ab-Button-outlined" %>
-      </div>
-    </div>
-  </section>
+<!-- チケットURL共有 -->
+<section class="ab-bg-rest-primary ab-rounded-md ab-border ab-text-center ab-p-6 ab-mb-8">
+  <h2 class="ab-text-headline-m ab-font-bold ab-mb-4">チケットURL</h2>
+  <div class="ab-rounded-md ab-border ab-p-2 ab-mb-2">
+    <p class="ab-text-body-m"><%= request.base_url + egifts_ticket_path(@ticket.public_key) %></p>
+  </div>
+  <p class="ab-text-body-s ab-mb-4">このURLを共有してチケットを贈ることができます</p>
+  <%= link_to "チケットを確認する", egifts_ticket_path(@ticket.public_key), class: "ab-Button ab-w-160", target: "_blank" %>
+</section>
 
-  <!-- ボタン -->
-  <section>
-    <div class="ab-flex">
-      <%= link_to "トップページに戻る",
-          egift_stores_root_path,
-          class: "ab-Button ab-w-full" %>
-    </div>
-  </section>
-
-</div>
-
-<script>
-  function copyTicketUrl() {
-    const urlInput = document.getElementById('ticket-url');
-    urlInput.select();
-
-    try {
-      document.execCommand('copy');
-
-      const button = event.target;
-      const originalText = button.textContent;
-      const originalClass = button.className;
-
-      button.textContent = 'コピー済み!';
-      button.className = 'ab-Button';
-
-      setTimeout(() => {
-        button.textContent = originalText;
-        button.className = originalClass;
-      }, 1000);
-    } catch (err) {
-      console.error('URLのコピーに失敗しました:', err);
-      alert('URLのコピーに失敗しました。手動でコピーしてください。');
-    }
-  }
-</script>
+<!-- ボタン -->
+<section class="ab-flex ab-flex-justify-center ab-mb-8">
+  <%= link_to "トップページに戻る", egift_stores_root_path, class: "ab-Button-outlined ab-w-160" %>
+</section>

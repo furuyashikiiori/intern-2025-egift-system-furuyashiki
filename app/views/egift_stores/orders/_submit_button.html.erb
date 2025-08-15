@@ -1,6 +1,0 @@
-<section>
-  <%= form_with url: egift_stores_orders_path, method: :post, local: true, class: "ab-w-full" do |form| %>
-    <%= form.hidden_field :item_id, value: @item.id %>
-    <%= form.submit "今すぐ購入してギフトを送る", class: "ab-Button ab-w-full ab-text-center" %>
-  <% end %>
-</section> 
