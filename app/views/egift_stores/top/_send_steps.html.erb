@@ -3,22 +3,19 @@
     {
       # step1
       title: "ギフトを作る",
-      description: "贈るギフトとカードのデザインを選んだら相手へのメッセージを入力します。",
-      image: "send-step1.png"
+      description: "贈るギフトを選んで購入します。",
     },
     {
       # step2
       title: "贈り方を選ぶ",
-      description: "Twitter、メール、LINE、Facebookのいずれかで贈ることができます。 ※PCでのご購入の場合、LINEはご利用いただけません。",
-      image: "send-step2.png"
+      description: "LINEやSlackなど、お好みの方法で贈ることができます。",
     },
     {
       # step3
       title: "ギフトを贈る",
       description: "ギフトURLを選択した方法で贈りましょう！",
-      image: "send-step3.png"
     }
   ]
 %>
 
-<%= render "egift_stores/shared/steps_section", title: "贈り方", steps: send_steps, bg_light: true %> 
+<%= render "steps_section", title: "贈り方", steps: send_steps %> 

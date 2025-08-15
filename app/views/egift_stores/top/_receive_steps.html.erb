@@ -3,22 +3,19 @@
     {
       # step1
       title: "ギフトを受け取る",
-      description: "Facebook、メール、LINE、Twitterのいずれかでギフトが届きます。",
-      image: "receive-step1.png"
+      description: "URLとしてギフトが届きます。",
     },
     {
       # step2
       title: "店舗に行く",
       description: "ギフトが届いたら店舗に行きましょう。",
-      image: "receive-step2.png"
     },
     {
       # step3
       title: "ギフトを提示する",
       description: "店舗スタッフにギフト画面を提示しましょう。",
-      image: "receive-step3.png"
     }
   ]
 %>
 
-<%= render "egift_stores/shared/steps_section", title: "受取り方", steps: receive_steps, bg_light: false %> 
+<%= render "steps_section", title: "受取り方", steps: receive_steps %> 
