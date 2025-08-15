@@ -7,7 +7,7 @@ class EgiftStores::OrdersController < EgiftStores::ApplicationController
   def create
     @ticket = @item.tickets.create!(
       brand: current_brand,
-      content: 4.times.map { SecureRandom.alphanumeric(4).upcase }.join("-"),
+      content: TicketContentService.generate,
     )
 
     redirect_to egift_stores_order_path(@ticket.public_key)
