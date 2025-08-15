@@ -1,0 +1,10 @@
+<h2 class="ab-text-headline-l ab-font-bold ab-text-center ab-mb-4"><%= title %></h2>
+
+<section class="ab-bg-rest-secondary ab-rounded-md ab-flex ab-flex-column ab-p-8 ab-gap-4 ab-mb-12">
+  <% steps.each.with_index(1) do |step, number| %>
+    <div>
+      <h3 class="ab-text-headline-s ab-font-bold"><%= number %>. <%= step[:title] %></h3>
+      <p class="ab-text-body-m"><%= step[:description] %></p>
+    </div>
+  <% end %>
+</section>
