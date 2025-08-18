@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   constraints host: "brand-admin.intern-admin.e-gift.co" do
-    namespace :admins do
+    namespace :admins, path: nil do
       root "top#index"
       resources :sessions, only: [ :new, :create, :destroy ]
       resources :items
@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   end
 
   constraints host: /\A[a-z0-9-]+\.intern-giftee\.e-gift\.co\z/ do
-    namespace :egift_stores do
+    namespace :egift_stores, path: nil do
       root "top#index"
       resources :orders, only: [ :new, :create, :show ]
     end
 
-    namespace :egifts do
+    namespace :egifts, path: nil do
       resources :tickets, only: [ :show ], param: :public_key
     end
   end
