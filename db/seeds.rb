@@ -5,7 +5,7 @@ require "active_storage/engine"
 seeds = [
   {
     brand_name: "Planet Cafe",
-    brand_domain: "planet-cafe.intern.e-gift.co",
+    brand_domain: "planet-cafe.intern-giftee.e-gift.co",
     admin_users: [
       { email: "sato-kenta@example.com", name: "佐藤 健太", password: "YNgKQBx5RVHt", password_confirmation: "YNgKQBx5RVHt" },
       { email: "yamada-ayaka@example.com", name: "山田 彩花", password: "bd78UsRcUFwR", password_confirmation: "bd78UsRcUFwR" },
@@ -27,7 +27,7 @@ seeds = [
   },
   {
     brand_name: "Venus Flower Shop",
-    brand_domain: "venus-flower-shop.intern.e-gift.co",
+    brand_domain: "venus-flower-shop.intern-giftee.e-gift.co",
     admin_users: [
       { email: "ito-kaito@example.com", name: "伊藤 海斗", password: "UcCKxtDXqd3U", password_confirmation: "UcCKxtDXqd3U" },
       { email: "saito-kana@example.com", name: "斎藤 佳奈", password: "pt8mA8fcBtBK", password_confirmation: "pt8mA8fcBtBK" },
@@ -49,7 +49,7 @@ seeds = [
   },
   {
     brand_name: "Jupiter Steak House",
-    brand_domain: "jupiter-steak-house.intern.e-gift.co",
+    brand_domain: "jupiter-steak-house.intern-giftee.e-gift.co",
     admin_users: [
       { email: "yoshida-yui@example.com", name: "吉田 結衣", password: "9yGTmAAZry", password_confirmation: "9yGTmAAZry" },
       { email: "kobayashi-tomoya@example.com", name: "小林 智也", password: "nLsbVszhv9", password_confirmation: "nLsbVszhv9" },
