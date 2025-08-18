@@ -4,18 +4,23 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  namespace :admins do
-    root "top#index"
-    resources :sessions, only: [ :new, :create, :destroy ]
-    resources :items
+
+  constraints host: "brand-admin.intern-giftee.e-gift.co" do
+    namespace :admins do
+      root "top#index"
+      resources :sessions, only: [ :new, :create, :destroy ]
+      resources :items
+    end
   end
 
-  namespace :egift_stores do
-    root "top#index"
-    resources :orders, only: [ :new, :create, :show ]
-  end
+  constraints host: /\.intern-giftee.e-gift.co\z/ do
+    namespace :egift_stores do
+      root "top#index"
+      resources :orders, only: [ :new, :create, :show ]
+    end
 
-  namespace :egifts do
-    resources :tickets, only: [ :show ], param: :public_key
+    namespace :egifts do
+      resources :tickets, only: [ :show ], param: :public_key
+    end
   end
 end
