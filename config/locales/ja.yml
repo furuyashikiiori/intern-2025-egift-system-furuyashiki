@@ -1,12 +1,4 @@
 ja:
-  activerecord:
-    models:
-      item: 商品
-    attributes:
-      item:
-        name: 商品名
-        price: 価格
-        description: 商品説明
   errors:
     format: "%{attribute}%{message}"
     messages:
@@ -14,7 +6,13 @@ ja:
       too_long: "は%{count}文字以内で入力してください"
       too_short: "は%{count}文字以上で入力してください"
       greater_than: "は%{count}より大きい値にしてください"
-
+  activerecord:
+    attributes:
+      item:
+        name: 商品名
+        price: 価格
+        description: 商品説明
+        image: 商品画像
   activemodel:
     attributes:
       item_form:
