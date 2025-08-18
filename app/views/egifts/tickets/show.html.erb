@@ -2,11 +2,7 @@
   <!-- 商品画像 -->
   <div class="ab-mb-6">
     <% if @ticket.item.image.attached? %>
-      <%= image_tag @ticket.item.image, alt: @ticket.item.name, class: "ab-w-100 ab-h-100 ab-rounded-lg" %>
-    <% else %>
-      <div class="ab-w-100 ab-h-100 ab-rounded-lg ab-flex ab-items-center">
-        <span>画像なし</span>
-      </div>
+      <%= image_tag @ticket.item.image, alt: @ticket.item.name, class: "ab-w-192 ab-h-192 ab-rounded-lg" %>
     <% end %>
   </div>
 
