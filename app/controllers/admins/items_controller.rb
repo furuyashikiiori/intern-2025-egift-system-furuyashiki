@@ -42,7 +42,6 @@ class Admins::ItemsController < Admins::ApplicationLoggedInController
 
   def set_item
     @item = current_brand.items.active.find(params[:id])
-
   end
 
   def item_params
