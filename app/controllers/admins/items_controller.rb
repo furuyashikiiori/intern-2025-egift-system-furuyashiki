@@ -2,7 +2,7 @@ class Admins::ItemsController < Admins::ApplicationLoggedInController
   before_action :set_item, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @items = current_brand.items.active
+    @items = current_brand.items.active.order(created_at: :desc)
   end
 
   def show
@@ -42,6 +42,7 @@ class Admins::ItemsController < Admins::ApplicationLoggedInController
 
   def set_item
     @item = current_brand.items.active.find(params[:id])
+
   end
 
   def item_params
