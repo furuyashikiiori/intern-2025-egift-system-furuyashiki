@@ -1,5 +1,5 @@
 class Admins::ItemsController < Admins::ApplicationLoggedInController
-  before_action :set_item, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_item, only: [ :show, :edit, :update, :destroy, :status ]
 
   def index
     @items = current_brand.items.active.order(created_at: :desc)
@@ -36,6 +36,12 @@ class Admins::ItemsController < Admins::ApplicationLoggedInController
   def destroy
     @item.soft_delete
     redirect_to admins_items_path, notice: "商品が正常に削除されました。"
+  end
+
+  def status
+    @item.update(status: !@item.status)
+    status_text = @item.status ? "公開" : "非公開"
+    redirect_to admins_items_path, notice: "商品のステータスを#{status_text}に変更しました。"
   end
 
   private
