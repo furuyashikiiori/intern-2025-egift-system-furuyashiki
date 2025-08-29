@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     namespace :admins, path: nil do
       root "top#index"
       resources :sessions, only: [ :new, :create, :destroy ]
-      resources :items
+      resources :items do
+        member do
+        put :status
+        end
+      end
     end
   end
 

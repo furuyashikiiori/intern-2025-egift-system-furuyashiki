@@ -11,6 +11,8 @@
         <th class="ab-Table-head-cell">商品画像</th>
         <th class="ab-Table-head-cell">商品名</th>
         <th class="ab-Table-head-cell">価格</th>
+        <th class="ab-Table-head-cell">ステータス</th>
+        <th class="ab-Table-head-cell"></th>
         <th class="ab-Table-head-cell">作成日時</th>
         <th class="ab-Table-head-cell"></th>
       </tr>
@@ -25,6 +27,13 @@
           </td>
           <td class="ab-Table-cell"><%= link_to item.name, admins_item_path(item) %></td>
           <td class="ab-Table-cell"><%= format_price(item.price) %></td>
+          <td class="ab-Table-cell <%= item.status? ? "ab-text-positive" : "ab-text-notice" %>"><%= item.status? ? "公開中" : "非公開中" %></td>
+          <td class="ab-Table-cell">
+            <%= link_to (item.status? ? "非公開にする" : "公開する"),
+                  status_admins_item_path(item),
+                  data: { turbo_method: :put, turbo_confirm: "公開・非公開を変更しますか？" },
+                  class: "ab-Button ab-Button-xsmall" %>
+          </td>          
           <td class="ab-Table-cell"><%= item.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
           <td class="ab-Table-cell">
             <%= link_to "詳細", admins_item_path(item), class: "ab-Button-neutral" %>
