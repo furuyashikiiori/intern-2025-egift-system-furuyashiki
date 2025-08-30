@@ -1,3 +1,11 @@
+<input type="color" class="color-selector" value="#e66465" style="all: revert;"></input>
+<script>
+  const colorpicker = document.querySelector('.color-selector');
+  const backgroundcolor = document.querySelector('body');
+  colorpicker.addEventListener('input', function(e) { 
+    backgroundcolor.style.backgroundColor = e.target.value; 
+  });
+</script>
 <%= render 'key_visual' %>
 <%= render 'egift_about' %>
 <%= render 'send_steps' %>
