@@ -2,6 +2,13 @@
 
 <% content_for :page_actions do %>
   <%= link_to "新規作成", new_admins_item_path, class: "ab-Button" %>
+  <p class="ab-Text ab-Table-head-cell">販売サイトの表示順</p>
+  <div class=" ab-border-b">
+    <%= form_with model: @brand, url: admins_brand_path(@brand), method: :patch, local: true do |f|%>
+    <%= f.select :sortorder, [["↓日付の新しい順", "created_at"], ["↓日付の古い順", "created_at_asc"], ["↓価格の高い順", "price_desc"], ["↓価格の安い順", "price_asc"], ["↓名前のA-Z", "name"], ["↓ 名前のZ-A", "name_desc"]], { selected: @brand.sortorder }, { onchange: "this.form.submit();" } %>
+    <%= f.submit '変更', style: "display: none;" %>
+  <% end %>
+  </div>
 <% end %>
 
 <% if @items.any? %>
