@@ -2,7 +2,24 @@ class Admins::ItemsController < Admins::ApplicationLoggedInController
   before_action :set_item, only: [ :show, :edit, :update, :destroy, :status ]
 
   def index
-    @items = current_brand.items.active.order(created_at: :desc)
+    @brand = current_brand
+    sort_order = @brand.sortorder
+    @items = case sort_order
+             when 'created_at'
+               current_brand.items.active.order(created_at: :desc)
+             when 'created_at_asc'
+               current_brand.items.active.order(created_at: :asc)
+             when 'price_desc'
+               current_brand.items.active.order(price: :desc)
+             when 'price_asc'
+               current_brand.items.active.order(price: :asc)
+             when 'name'
+               current_brand.items.active.order(name: :asc)
+             when 'name_desc'
+               current_brand.items.active.order(name: :desc)
+             else
+               current_brand.items.active.order(created_at: :desc)
+             end
   end
 
   def show
