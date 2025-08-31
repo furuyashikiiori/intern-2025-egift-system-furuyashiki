@@ -5,3 +5,12 @@
 <div class="ab-mt-4">
   <%= link_to "eGift販売サイトへ移動", "http://#{current_brand.domain}", class: "ab-Button", target: "_blank" %>
 </div>
+
+<input type="color" class="color-selector" value="#e66465" style="all: revert;"></input>
+<script>
+  const colorpicker = document.querySelector('.color-selector');
+  const backgroundcolor = document.querySelector('body');
+  colorpicker.addEventListener('input', function(e) { 
+    backgroundcolor.style.backgroundColor = e.target.value; 
+  });
+</script>
